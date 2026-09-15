@@ -1,6 +1,6 @@
 // Previous cache marker kept for regression compatibility: 5goddesses-pwa-v105
 // Previous Storymode cache marker kept for regression compatibility: v113
-const CACHE='5goddesses-pwa-v124';
+const CACHE='5goddesses-pwa-v125';
 const CORE=[
   "./",
   "./index.html",
@@ -15,7 +15,7 @@ const CORE=[
   "./story-boss-decks.js",
   "./story-encounter-decks.js",
   "./story-mode.js",
-  "./story-weltkarte.png",
+  "./story-weltkarte-v214.png",
   "./manifest.webmanifest",
   "./start-hintergrund.png",
   "./5goddesses-intro.mp3",
