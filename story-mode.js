@@ -6,7 +6,7 @@ function actTitle(act){return ACTS[Number(act)]||`Akt ${act}`;}
 
 const EVENTS=[
   {
-    id:'act1_prolog',act:1,order:0,title:'Menias Bibliothek',x:53.0,y:18.2,type:'story',
+    id:'act1_prolog',act:1,order:0,title:'Menias Bibliothek',x:39.5,y:14.5,type:'story',
     text:[
       'Zwischen den hohen Regalen ihrer Bibliothek folgt Menia erneut den Spuren der fünf Welten. Unter dem Gebäude liegen jene Katakomben, die kaum jemand außer ihr kennt – und dort wartet der große blaue Kristall.',
       'Die alten Texte berichten von einem gewaltigen Energiekern im Zentrum, der weitere Kristalle speist. Solche Kristalle soll es in den großen Städten aller fünf Welten geben: Oberwelt, Mittelwelt, Astralwelt, Unterwelt und Zwischenwelt.',
@@ -15,7 +15,7 @@ const EVENTS=[
     post:'Menia schließt die Aufzeichnungen und steckt einige Notizen ein. Wenn Martha persönlich nach ihr verlangt, wird der Auftrag kaum gewöhnlich sein.'
   },
   {
-    id:'act1_martha',act:1,order:1,title:'Auftrag von Haus Imperia',x:43.0,y:18.8,type:'encounter',encounter:'act1_martha',
+    id:'act1_martha',act:1,order:1,title:'Auftrag von Haus Imperia',x:27.0,y:19.5,type:'encounter',encounter:'act1_martha',
     text:[
       'Martha Kaizer erwartet Menia im Einflussbereich von Haus Imperia. Bevor sie die eigentliche Aufgabe übergibt, will sie sicher sein, dass Menia für die kommenden Auseinandersetzungen vorbereitet ist.',
       'Das Gefecht ist eine Prüfung, kein persönlicher Konflikt. Martha tritt mit Verbündeten an, die ihrer Ordnung und ihrem Schutzgedanken folgen.'
@@ -23,7 +23,7 @@ const EVENTS=[
     post:'Martha akzeptiert Menias Leistung. In mehreren Bezirken der Oberwelt wurden ungewöhnliche Vorgänge an den Kristallanlagen gemeldet. Menia soll herausfinden, ob dahinter ein Angriff, Sabotage – oder etwas völlig anderes steckt.'
   },
   {
-    id:'act1_zahira',act:1,order:2,title:'Die unsichtbare Beobachterin',x:46.2,y:23.0,type:'encounter',encounter:'act1_zahira',
+    id:'act1_zahira',act:1,order:2,title:'Die unsichtbare Beobachterin',x:58.0,y:19.5,type:'encounter',encounter:'act1_zahira',
     text:[
       'Auf dem Weg zur nächsten Kristallspur merkt Menia, dass sie beobachtet wird. Die Hinweise führen zu Zahira Semiramis.',
       'Zahira gibt kaum etwas preis. Statt einer Erklärung fordert sie Menia heraus – als wolle sie nicht gewinnen, sondern herausfinden, wie viel Menia bereits verstanden hat.'
@@ -31,7 +31,7 @@ const EVENTS=[
     post:'Nach dem Kampf bleibt Zahiras Absicht unklar. Doch eine ihrer Bemerkungen lenkt Menias Blick auf einen von Automata kontrollierten Sperrbezirk. Dort sollen Zugänge zu einer wichtigen Anlage abgeriegelt worden sein.'
   },
   {
-    id:'act1_sperrbezirk',act:1,order:3,title:'Sperrbezirk',x:34.0,y:19.0,type:'encounter',encounter:'act1_sperrbezirk',
+    id:'act1_sperrbezirk',act:1,order:3,title:'Sperrbezirk',x:58.0,y:14.0,type:'encounter',encounter:'act1_sperrbezirk',
     text:[
       'Die Z.E.R.O.-Einheiten lassen Menia nicht passieren. Der Bereich steht unter vollständiger Kontrolle der Automata.',
       'Wenn Menia den Ursprung der Störung erreichen will, muss sie sich durch die erste Verteidigungslinie kämpfen.'
@@ -39,7 +39,7 @@ const EVENTS=[
     post:'Hinter der Sperre entdeckt Menia, dass die Maßnahmen nicht nur dem Schutz vor Eindringlingen dienen. Die Automata sichern den Weg zum Kernbereich selbst. Q.U.E.E.N.s Einfluss ist hier überall spürbar.'
   },
   {
-    id:'act1_waechter',act:1,order:4,title:'Die Wächter des Kerns',x:41.1,y:12.2,type:'encounter',encounter:'act1_waechter',
+    id:'act1_waechter',act:1,order:4,title:'Die Wächter des Kerns',x:67.5,y:18.0,type:'encounter',encounter:'act1_waechter',
     text:[
       'Je näher Menia der Anlage kommt, desto stärker wird das vertraute Pulsieren des Kristalls. Eine zweite Automata-Gruppe blockiert den letzten Zugang.',
       'Diese Wächter sind deutlich aggressiver. Menia erkennt D.E.A.T.H. zwischen den Einheiten – eine fraktionslose Konstruktion, deren Rolle sie noch nicht einordnen kann.'
@@ -47,7 +47,7 @@ const EVENTS=[
     post:'Der letzte Schutzring fällt. Vor Menia liegt der Zugang zu Q.U.E.E.N.s Bereich. Gleichzeitig reagiert der Kristall so stark wie nie zuvor. Irgendetwas verbindet diese Anlage mit den Signalen, die Menia in ihrer Bibliothek gespürt hat.'
   },
   {
-    id:'act1_queen',act:1,order:5,title:'Q.U.E.E.N. – Ordnung der Oberwelt',x:37.4,y:15.5,type:'boss',boss:'act1_queen',
+    id:'act1_queen',act:1,order:5,title:'Q.U.E.E.N. – Ordnung der Oberwelt',x:72.5,y:20.5,type:'boss',boss:'act1_queen',
     text:[
       'Q.U.E.E.N. stellt sich Menia selbst entgegen. Ihre Z.E.R.O.-Einheiten arbeiten wie Teile einer einzigen Maschine.',
       'Für Menia geht es nicht darum, die Automata zu vernichten. Sie braucht Zugang zu den Informationen hinter Q.U.E.E.N.s Sperre – Informationen über die Kristalle und ihre Verbindung zu den anderen Welten.'
@@ -55,7 +55,7 @@ const EVENTS=[
     post:'Q.U.E.E.N.s Niederlage öffnet Menia den Zugriff auf die gesuchten Daten. Die Störung ist nicht auf die Oberwelt begrenzt. Eine Spur führt deutlich in Richtung Astralwelt. Damit endet der erste Abschnitt von Menias Reise – und zum ersten Mal liegt wirklich eine andere Welt vor ihr.'
   },
   {
-    id:'act2_prolog',act:2,order:0,title:'Jenseits des Himmels',x:31.6,y:31.0,type:'story',
+    id:'act2_prolog',act:2,order:0,title:'Jenseits des Himmels',x:42.5,y:31.0,type:'story',
     text:[
       'Die Daten aus Q.U.E.E.N.s Anlage weisen auf dieselbe Energiesignatur, die Menia bereits im Kristall unter ihrer Bibliothek gespürt hat. Doch die Spur endet nicht in der Oberwelt. Sie führt über ihre Grenzen hinaus – in die Astralwelt.',
       'Der Übergang ist alles andere als sanft. Als Menia wieder festen Boden unter den Füßen hat, liegt vor ihr eine Welt aus schwebenden Felsen, Lichtströmen und Bauwerken, die jeder vertrauten Vorstellung von Schwerkraft widersprechen. Kiki erholt sich deutlich schneller und fliegt voraus.',
@@ -64,7 +64,7 @@ const EVENTS=[
     post:'Menia richtet ihre Aufzeichnungen, überprüft das Kristallfragment und folgt Kiki tiefer in die Astralwelt. Die erste Person, die ihren Weg kreuzt, scheint bereits auf sie aufmerksam geworden zu sein.'
   },
   {
-    id:'act2_saphira',act:2,order:1,title:'Die ungezähmte Flamme',x:22.2,y:37.3,type:'encounter',encounter:'act2_saphira',
+    id:'act2_saphira',act:2,order:1,title:'Die ungezähmte Flamme',x:28.5,y:33.0,type:'encounter',encounter:'act2_saphira',
     text:[
       'Saphira hält Menia zunächst für eine Eindringling. Die eigenwillige Feuer-Magierin kennt die Gefahren der Astralwelt und hat keinen Grund, einer Fremden zu vertrauen, die mit einem unbekannten Kristallfragment auftaucht.',
       'Menia versucht zu erklären, weshalb sie Q.U.E.E.N.s Spur bis hierher verfolgt hat. Saphira bleibt misstrauisch. Erst ein Gefecht soll zeigen, ob Menia wirklich nur Antworten sucht oder selbst eine Gefahr für Astranum darstellt.'
@@ -72,7 +72,7 @@ const EVENTS=[
     post:'Saphira erkennt, dass Menia keine Eroberin ist. Sie berichtet von ungewöhnlichen astralen Reaktionen und von Gebieten, in denen sich Wurzeln und fremdartige Kreaturen um alte Fragmente sammeln. Eine dieser Spuren führt zur Wurzelpein und zu Psilo Cybe.'
   },
   {
-    id:'act2_psilo',act:2,order:2,title:'Wurzelpein',x:17.5,y:43.7,type:'encounter',encounter:'act2_psilo',
+    id:'act2_psilo',act:2,order:2,title:'Wurzelpein',x:35.0,y:35.0,type:'encounter',encounter:'act2_psilo',
     text:[
       'Die Landschaft verändert sich, je weiter Menia der Spur folgt. Wurzeln durchbrechen Felsen, fremdartige Pflanzen reagieren auf astrale Energie und zwischen den Ruinen breitet sich die Wurzelpein aus.',
       'Im Zentrum dieses Gebietes steht Psilo Cybe. Menias Suche nach einem freigelegten Fragment führt unmittelbar in Psilos Einflussbereich. Keine von beiden ist bereit, der anderen das Fundstück kampflos zu überlassen.'
@@ -80,7 +80,7 @@ const EVENTS=[
     post:'Zwischen den aufgebrochenen Wurzeln findet Menia tatsächlich ein Astralfragment. Es reagiert auf das Stück aus der Oberwelt. Psilo nennt den Namen einer Bezwingerin, die solche Fragmente gezielt sucht: Keyla Dorn.'
   },
   {
-    id:'act2_keyla',act:2,order:3,title:'Die Fragmentjägerin',x:10.7,y:28.5,type:'encounter',encounter:'act2_keyla',
+    id:'act2_keyla',act:2,order:3,title:'Die Fragmentjägerin',x:41.5,y:33.0,type:'encounter',encounter:'act2_keyla',
     text:[
       'Im Astralfragment-Gebirge trifft Menia auf Keyla Dorn. Keyla erkennt sofort, dass Menia etwas bei sich trägt, das nicht in die Oberwelt gehören dürfte.',
       'Beide wollen Antworten, doch keine ist bereit, ihre Fundstücke einer Fremden anzuvertrauen. Aus dem gegenseitigen Misstrauen entsteht ein Kampf um die Fragmente und um die Frage, wer ihre Bedeutung überhaupt verstehen kann.'
@@ -88,7 +88,7 @@ const EVENTS=[
     post:'Nach dem Gefecht legen Menia und Keyla ihre Fragmente nebeneinander. Ehre, Leben, Verteidigung – und Menias Fundstück aus Q.U.E.E.N.s Anlage – reagieren miteinander. Eine Spur führt weiter zu Evelyn und zu einem Fluch, der mit einem Astralfragment-Drachen verbunden ist.'
   },
   {
-    id:'act2_evelyn',act:2,order:4,title:'Der Schattenfluch',x:19.1,y:32.0,type:'encounter',encounter:'act2_evelyn',
+    id:'act2_evelyn',act:2,order:4,title:'Der Schattenfluch',x:57.0,y:33.0,type:'encounter',encounter:'act2_evelyn',
     text:[
       'Menia findet Evelyn dort, wo die astrale Energie unruhig wird. Der Schattenfluch, der mit ihr verbunden ist, wirkt zugleich wie Wunde und Schutz – eine Macht, die regeneriert und dennoch ihren Preis fordert.',
       'Evelyn reagiert abweisend auf Menias Fragen nach dem Drachen, den Fragmenten und vor allem nach der Göttin der Astralwelt. Als Menia nicht nachgibt, wird aus dem Gespräch eine offene Konfrontation.'
@@ -96,7 +96,7 @@ const EVENTS=[
     post:'Evelyn bestätigt Menias schlimmsten Verdacht: Die Göttin der Astralwelt ist keine ferne Legende. Sie hat gesprochen, gelenkt und Forderungen gestellt. Die Spur der Fragmente führt damit zum Astranum-Konklave – und zu seiner Magistratin Strikelyn.'
   },
   {
-    id:'act2_strikelyn',act:2,order:5,title:'Strikelyn – Magistratin des Astranums',x:26.6,y:34.4,type:'boss',boss:'act2_strikelyn',
+    id:'act2_strikelyn',act:2,order:5,title:'Strikelyn – Magistratin des Astranums',x:66.0,y:36.0,type:'boss',boss:'act2_strikelyn',
     text:[
       'Strikelyn erwartet Menia im Einflussbereich des Astranum-Konklaves. Als brillante Magistratin und ehemalige Kommandantin verkörpert sie die Ordnung der Astralwelt – und sie wurde von der Göttin selbst eingesetzt.',
       'Menia verlangt Zugang zu den Archiven und Antworten auf die Verbindung zwischen Göttin, Fragmenten und den fünf Welten. Strikelyn verweigert beides. Für sie ist Menias Suche längst zu einem Eingriff in Angelegenheiten geworden, deren Folgen die Fremde aus der Oberwelt nicht überblicken kann.',
@@ -105,7 +105,7 @@ const EVENTS=[
     post:'Nach Strikelyns Niederlage erhält Menia Zugang zu einer Spur, die noch weiter zurückreicht. In den Aufzeichnungen findet sie keine einfache Erklärung für die Göttin – sondern eine Verbindung in die Mittelwelt und den Namen Mira Masako. Eine zweite Linie reicht Jahrhunderte weiter bis zu Skorpia Masako. Akt II endet mit einer neuen Frage: Wie können dieselben Spuren nicht nur Welten, sondern auch Zeiten miteinander verbinden?'
   },
   {
-    id:'act3_prolog',act:3,order:0,title:'Spuren in die Mittelwelt',x:72.5,y:31.5,type:'story',
+    id:'act3_prolog',act:3,order:0,title:'Spuren in die Mittelwelt',x:45.0,y:51.0,type:'story',
     text:[
       'Strikelyns Archive führen Menia aus der Astralwelt in die Mittelwelt. Die Aufzeichnungen nennen Mira Masako vom Chikara-Clan – eine Kriegerin, deren Geschichte mit Astrana-Energie, Tod und Wiederkehr verbunden ist.',
       'Die Mittelwelt wirkt zunächst vertrauter als die schwebenden Landschaften Astranums. Doch zwischen befestigten Städten, alten Orden und den Küstenreichen liegen dieselben Energiespuren, denen Menia seit ihrer Bibliothek folgt.',
@@ -114,7 +114,7 @@ const EVENTS=[
     post:'Menia folgt den Hinweisen durch die Mittelwelt. Der Weg zu Mira führt zunächst an Kriegerinnen vorbei, die einer Fremden aus der Oberwelt keinen freien Durchmarsch gewähren.'
   },
   {
-    id:'act3_jeanne',act:3,order:1,title:'Glut des Morgens',x:76.0,y:35.0,type:'encounter',encounter:'act3_jeanne',
+    id:'act3_jeanne',act:3,order:1,title:'Glut des Morgens',x:25.5,y:49.0,type:'encounter',encounter:'act3_jeanne',
     text:[
       'Jeanne d’Arque stellt sich Menia auf ihrer Reise entgegen. Für Jeanne ist Menias Auftauchen mit fremden Fragmenten und Fragen nach alten Energien Grund genug, ihre Absichten zu prüfen.',
       'Menia will keine Feindschaft mit der Mittelwelt beginnen, doch sie kann ihre Suche auch nicht abbrechen. Wieder entscheidet ein Gefecht darüber, ob sie ihren Weg fortsetzen darf.'
@@ -122,7 +122,7 @@ const EVENTS=[
     post:'Jeanne erkennt Menias Entschlossenheit an. Ihre Hinweise führen Menia weiter in Richtung der Küsten und zu einer Bezwingerin, deren Wege weit weniger geordnet verlaufen: Calypso.'
   },
   {
-    id:'act3_calypso',act:3,order:2,title:'Die Freibeuterin',x:91.0,y:49.0,type:'encounter',encounter:'act3_calypso',
+    id:'act3_calypso',act:3,order:2,title:'Die Freibeuterin',x:31.0,y:55.0,type:'encounter',encounter:'act3_calypso',
     text:[
       'An den Küsten der Mittelwelt kreuzt Calypso Menias Weg. Die Freibeuterin besitzt Informationen über Bewegungen zwischen den Regionen – doch Wissen ist für sie keine kostenlose Ware.',
       'Aus Verhandlung wird Herausforderung. Menia muss beweisen, dass die Spur, der sie folgt, mehr wert ist als ein weiteres Gerücht aus den fünf Welten.'
@@ -130,7 +130,7 @@ const EVENTS=[
     post:'Calypso nennt Menia schließlich den Weg zum Einflussgebiet des Chikara-Clans. Zum ersten Mal scheint Mira Masako nicht mehr nur ein Name aus Strikelyns Archiven zu sein.'
   },
   {
-    id:'act3_mira',act:3,order:3,title:'Der schneidende Wind',x:84.2,y:37.0,type:'encounter',encounter:'act3_mira',
+    id:'act3_mira',act:3,order:3,title:'Der schneidende Wind',x:45.0,y:58.0,type:'encounter',encounter:'act3_mira',
     text:[
       'Menia findet Mira Masako. Die Kriegerin des Chikara-Clans begegnet der Fremden wachsam, besonders als Menia nach ihrer Vergangenheit und ihrer Verbindung zur Göttin der Mittelwelt fragt.',
       'Menia spricht von Wiederbelebung, Astrana-Energie und einer Blutlinie, die laut den Archiven weit über Miras eigene Zeit hinausreicht. Mira hat keinen Grund, dieser Geschichte sofort zu glauben.'
@@ -138,7 +138,7 @@ const EVENTS=[
     post:'Nach dem Kampf erzählt Mira von ihrem Tod, ihrer Rückkehr und der Macht, die sie wieder ins Leben brachte. Menia erkennt darin dasselbe Muster, das sie bereits bei Evelyn gesehen hat. Doch Miras Blutlinie führt noch weiter – zu einem Namen aus einer Zeit, die noch gar nicht gekommen ist: Skorpia Masako.'
   },
   {
-    id:'act3_zukunft',act:3,order:4,title:'Fremde in der Zukunft',x:62.5,y:50.0,type:'encounter',encounter:'act3_zukunft',
+    id:'act3_zukunft',act:3,order:4,title:'Fremde in der Zukunft',x:59.0,y:55.0,type:'encounter',encounter:'act3_zukunft',
     text:[
       'Die Spur der Masakos endet nicht an einem Ort, sondern an einer anderen Zeit. Menia gelangt nach Genova Toshi – in eine Zukunft, in der Technologie, Astrana und die Kräfte der Zwischenwelt ineinandergreifen.',
       'Dort trifft sie auf Trix Sigma. Portale und Verschiebungen von Raum und Zeit machen schnell deutlich, dass Menias vertraute Regeln hier kaum noch gelten. Trix hält die Fremde aus der Vergangenheit zunächst für eine weitere Störung, die beseitigt werden muss.'
@@ -146,7 +146,7 @@ const EVENTS=[
     post:'Trix’ Spuren führen Menia tiefer in die Zukunft. Hinweise auf den Chikara-Clan existieren noch immer – aber zugleich taucht ein neues Wort immer häufiger auf: Mornak.'
   },
   {
-    id:'act3_bruet',act:3,order:5,title:'Flüstern der Brut',x:80.0,y:84.0,type:'encounter',encounter:'act3_bruet',
+    id:'act3_bruet',act:3,order:5,title:'Flüstern der Brut',x:70.5,y:54.0,type:'encounter',encounter:'act3_bruet',
     text:[
       'Noch bevor Menia Skorpia erreicht, stößt sie auf die Vorzeichen einer größeren Bedrohung. Das Flüstern der Brut kündigt Mornak an, und aus einzelnen Spuren wird das Bild eines Schwarms.',
       'Menia muss sich durch die Brut kämpfen, während Kiki über den dunklen Formationen kreist. Was hier entsteht, ist kein lokaler Konflikt – etwas sammelt Kräfte in einem Ausmaß, das ganze Welten bedrohen könnte.'
@@ -154,7 +154,7 @@ const EVENTS=[
     post:'Hinter den Spuren der Brut findet Menia endlich Skorpia Masako. Doch der Name Mira macht die Begegnung nicht leichter. Für Skorpia klingt Menias Geschichte unmöglich – und gefährlich.'
   },
   {
-    id:'act3_skorpia',act:3,order:6,title:'Skorpia Masako – Stahlherz des Clans',x:77.0,y:58.0,type:'boss',boss:'act3_skorpia',
+    id:'act3_skorpia',act:3,order:6,title:'Skorpia Masako – Stahlherz des Clans',x:73.0,y:50.0,type:'boss',boss:'act3_skorpia',
     text:[
       'Skorpia Masako steht Menia als Nachfahrin einer Blutlinie gegenüber, die Menia in der Mittelwelt selbst kennengelernt hat. Jahrhunderte trennen Skorpia von Mira – und genau deshalb hält sie Menias Behauptungen zunächst für eine Provokation.',
       'Menia zeigt ihre Aufzeichnungen und spricht von Mira, Astrana und der Göttin. Skorpia bleibt misstrauisch. Bevor aus den beiden Verbündete werden können, muss Menia beweisen, dass sie weder Miras Namen missbraucht noch Teil der Mornak-Bedrohung ist.'
@@ -162,7 +162,7 @@ const EVENTS=[
     post:'Nach ihrer Niederlage hört Skorpia Menia endlich zu. Die Aufzeichnungen über Mira und die gemeinsamen Spuren überzeugen sie. Aus Gegnerinnen werden widerwillige Verbündete. Skorpia zeigt Menia, was sie selbst verfolgt hat: eine Mornak-Schwarmflotte – und im Zentrum der Bedrohung Nemesis.'
   },
   {
-    id:'act3_nemesis',act:3,order:7,title:'Nemesis – Geißel der Galaxie',x:82.0,y:73.5,type:'boss',boss:'act3_nemesis',
+    id:'act3_nemesis',act:3,order:7,title:'Nemesis – Geißel der Galaxie',x:90.0,y:46.0,type:'boss',boss:'act3_nemesis',
     text:[
       'Menia und Skorpia folgen der Schwarmflotte in den Nemesis-Sektor. Dort wartet Nemesis nicht allein: Die Mornak-Brut ist Teil ihrer Macht, und jeder Angriff droht im Schwarm zu verschwinden.',
       'Für Menia ist dies mehr als ein weiterer Kampf. Die Mornak verbinden die Zukunft, die Zwischenwelt und jene rätselhaften Kräfte, die ihre Reise seit der Oberwelt begleiten. Gemeinsam mit Skorpia stellt sie sich der Geißel der Galaxie.'
@@ -170,7 +170,7 @@ const EVENTS=[
     post:'Nemesis fällt und der Schwarm zieht sich zurück. Doch während Menia und Skorpia die Spuren des Kampfes untersuchen, reagiert Menias Kristall erneut. Ein beschädigter Übergang führt tiefer in die Zwischenwelt – zur Leere, zu den Apparaturen und zu Thal Ziris. Akt III endet dort, wo die nächste Frage beginnt: Was wurde in der Zwischenwelt versiegelt?' 
   },
   {
-    id:'act4_prolog',act:4,order:0,title:'Jenseits des beschädigten Übergangs',x:68.0,y:58.0,type:'story',
+    id:'act4_prolog',act:4,order:0,title:'Jenseits des beschädigten Übergangs',x:86.0,y:28.0,type:'story',
     text:[
       'Nach Nemesis bleibt ein beschädigter Übergang zurück. Menias Kristall reagiert darauf stärker als auf jedes gewöhnliche Portal. Die Signatur führt nicht zurück in die Mittelwelt, sondern tiefer in die Zwischenwelt.',
       'Hinter dem Übergang verändert sich die Umgebung. Raum und Entfernung wirken unzuverlässig, während dunkle Bereiche jede vertraute Form von Energie zu verschlucken scheinen. Menia erkennt dieselben Spuren, die bereits bei Strahl des Vergessens, den Portalen und den Apparaturen aufgetaucht sind.',
@@ -179,7 +179,7 @@ const EVENTS=[
     post:'Menia betritt einen Bereich der Zwischenwelt, in dem selbst ihre bisherigen Karten kaum Orientierung geben. Wenn jemand die Übergänge und ihre Regeln versteht, dann die Weltenwanderin.'
   },
   {
-    id:'act4_serinith',act:4,order:1,title:'Die Weltenwanderin',x:62.0,y:54.0,type:'encounter',encounter:'act4_serinith',
+    id:'act4_serinith',act:4,order:1,title:'Die Weltenwanderin',x:82.0,y:25.0,type:'encounter',encounter:'act4_serinith',
     text:[
       'Serinith Solthar kennt Wege, die für andere Bezwingerinnen nicht existieren. Menias Auftauchen mit Fragmenten aus mehreren Welten macht sie jedoch misstrauisch.',
       'Menia braucht Seriniths Wissen über Portale und die Leere. Serinith will zuerst wissen, ob Menia überhaupt in der Lage ist, die Gefahren hinter diesen Übergängen zu überstehen.'
@@ -187,7 +187,7 @@ const EVENTS=[
     post:'Serinith erkennt Menias Entschlossenheit an. Sie bestätigt, dass die Störungen mit alten Übergängen und den Strukturen um Khar Zirah zusammenhängen. Eine weitere Spur führt zu Trix Sigma.'
   },
   {
-    id:'act4_trix',act:4,order:2,title:'Rebellin der Leere',x:66.5,y:49.0,type:'encounter',encounter:'act4_trix',
+    id:'act4_trix',act:4,order:2,title:'Rebellin der Leere',x:88.0,y:30.0,type:'encounter',encounter:'act4_trix',
     text:[
       'Menia trifft erneut auf Trix Sigma. Diesmal geht es nicht um die Verwirrung einer Fremden in der Zukunft, sondern um die Leere selbst.',
       'Trix kennt ihre Gefahren und weigert sich, Menia ungehindert tiefer vordringen zu lassen. Portale, Positionswechsel und die Kräfte der Leere machen das Gefecht zu einer Prüfung der Regeln, die Menia erst zu verstehen beginnt.'
@@ -195,7 +195,7 @@ const EVENTS=[
     post:'Nach dem Kampf erhält Menia Hinweise auf Chronokrypta, Khar Zirah und eine Verbindung zu Thal Ziris. In den Aufzeichnungen taucht außerdem ein Name auf, den Menia bereits aus einer völlig anderen Blutlinie kennt: Chikara.'
   },
   {
-    id:'act4_lilith',act:4,order:3,title:'Das unmögliche Erbe',x:72.0,y:54.0,type:'encounter',encounter:'act4_lilith',
+    id:'act4_lilith',act:4,order:3,title:'Das unmögliche Erbe',x:86.0,y:63.0,type:'encounter',encounter:'act4_lilith',
     text:[
       'Die nächste Spur führt Menia zu Lilith. Was sie dort entdeckt, passt nicht in das Bild, das sie sich seit Mira und Skorpia vom Chikara-Erbe gemacht hat.',
       'Menia versucht die Verbindung zu verstehen, doch Lilith hat keinen Grund, einer Fremden ihre Geschichte offenzulegen. Das Rätsel um das Erbe bleibt zunächst hinter einem weiteren Gefecht verborgen.'
@@ -203,7 +203,7 @@ const EVENTS=[
     post:'Menia kann die Chikara-Verbindung nicht abschließend erklären. Sie hält sie in ihrer Chronik als ungelöstes Rätsel fest. Wichtiger ist eine andere Spur: Sekh\'Nehet – ein verlorener Ort, dessen Geschichte unmittelbar mit Thal Ziris verbunden ist.'
   },
   {
-    id:'act4_sekh',act:4,order:4,title:"Die Ruinen von Sekh'Nehet",x:58.0,y:61.0,type:'encounter',encounter:'act4_sekh',
+    id:'act4_sekh',act:4,order:4,title:"Die Ruinen von Sekh'Nehet",x:9.5,y:47.0,type:'encounter',encounter:'act4_sekh',
     text:[
       "Sekh'Nehet ist kein gewöhnlicher Schauplatz. Menia findet die Spuren einer zerstörten Ordnung, alter Experimente und Kräfte, die mit der Leere in Berührung gekommen sind.",
       'Zwischen den Ruinen steht D.E.A.T.H. ihrem weiteren Weg entgegen. Die Konstruktion erinnert Menia daran, dass Automata und die rätselhaften Systeme der fünf Welten weit stärker miteinander verflochten sind, als sie in der Oberwelt angenommen hatte.'
@@ -211,7 +211,7 @@ const EVENTS=[
     post:"Hinter D.E.A.T.H. findet Menia die entscheidende Spur: Thal Ziris versucht, verlorene Strukturen und Apparaturen zusammenzuführen. Im Zentrum steht das Versprechen, Sekh'Nehet wiederherzustellen."
   },
   {
-    id:'act4_thal',act:4,order:5,title:'Thal Ziris – Pharaonin der Zeit',x:55.0,y:68.0,type:'boss',boss:'act4_thal',
+    id:'act4_thal',act:4,order:5,title:'Thal Ziris – Pharaonin der Zeit',x:8.5,y:52.0,type:'boss',boss:'act4_thal',
     text:[
       "Thal Ziris wartet zwischen den Überresten von Sekh'Nehet. Ihre Suche nach den Apparaturen entspringt nicht bloßer Machtgier: Sie glaubt, damit ihre verlorene Heimat zurückbringen zu können.",
       'Menia erkennt jedoch das Muster, das sie seit Evelyn und Mira verfolgt. Wieder hat eine Göttin einer Bezwingerin genau das versprochen, wonach sie sich am stärksten sehnt – und verlangt dafür Handlungen, deren Folgen weit über eine einzelne Welt hinausreichen.',
@@ -220,7 +220,7 @@ const EVENTS=[
     post:'Nach Thals Niederlage verdichtet sich Menias Verdacht: Die Apparaturen sind nicht bloß Werkzeuge oder Waffen. Sie stehen mit den Gefängnissen der Göttinnen und den Grenzen zwischen den Welten in Verbindung. Die Spur führt nun in die Unterwelt – zu Wiedergeburt, Rachsucht und den Vengeressen. Damit endet Akt IV.'
   }
   ,{
-    id:'act5_prolog',act:5,order:0,title:'Hinab in die Unterwelt',x:39.0,y:73.0,type:'story',
+    id:'act5_prolog',act:5,order:0,title:'Hinab in die Unterwelt',x:50.0,y:68.0,type:'story',
     text:[
       'Thals Niederlage beantwortet Menias Fragen nicht – sie verändert sie. Die Apparaturen, die Kristalle und die Siegel weisen nun gemeinsam in die Unterwelt. Menia folgt der Spur mit Kiki durch einen Übergang, hinter dem dunkle Paläste, Mausoleen und roter Himmel warten.',
       'Die Unterwelt wirkt nicht wie ein Reich des bloßen Todes. Überall begegnet Menia Spuren von Wiederkehr, Vergeltung und Erinnerungen, die sich weigern zu verschwinden. Gerade darin erkennt sie erneut das Muster der Göttinnen: Sie bieten ihren Auserwählten an, was diese am stärksten verloren haben.',
@@ -229,7 +229,7 @@ const EVENTS=[
     post:'Menia beginnt den letzten Abschnitt ihrer Reise. Die Spur der gefangenen Göttinnen führt durch die Vengeressen und ihre Geschichten – und jeder Schritt scheint näher an die Frage zu führen, weshalb die fünf Göttinnen überhaupt versiegelt wurden.'
   },
   {
-    id:'act5_arcadia',act:5,order:1,title:'Die stille Zerstörung',x:34.0,y:78.0,type:'encounter',encounter:'act5_arcadia',
+    id:'act5_arcadia',act:5,order:1,title:'Die stille Zerstörung',x:25.5,y:70.0,type:'encounter',encounter:'act5_arcadia',
     text:[
       'Arcadia bewacht einen der Wege tiefer in die Unterwelt. Menias Fragmente und ihre Verbindung zu mehreren Welten machen sie sofort verdächtig.',
       'Menia versucht zu erklären, dass sie nicht gekommen ist, um die Ordnung der Unterwelt zu zerstören. Doch ihre Fragen nach den Göttinnen und den Vengeressen reichen aus, um Arcadia zum Kampf zu bewegen.'
@@ -237,7 +237,7 @@ const EVENTS=[
     post:'Arcadia gibt den Weg frei. Ihre Hinweise führen Menia zum Mausoleum der Rachsucht und zu einer Heilpriesterin, deren Rolle in der Unterwelt weit über gewöhnliche Heilung hinausgeht: Lilou Guerir.'
   },
   {
-    id:'act5_lilou',act:5,order:2,title:'Die oberste Heilpriesterin',x:30.0,y:69.0,type:'encounter',encounter:'act5_lilou',
+    id:'act5_lilou',act:5,order:2,title:'Die oberste Heilpriesterin',x:35.0,y:74.0,type:'encounter',encounter:'act5_lilou',
     text:[
       'Lilou Guerir begegnet Menia im Einflussbereich des Mausoleums. In einer Welt, in der Tod und Wiederkehr eng miteinander verbunden sind, besitzt Heilung eine andere Bedeutung als in Menias Heimat.',
       'Lilou schützt die Geheimnisse der Unterwelt und zweifelt daran, dass Menia die Konsequenzen ihrer Suche versteht. Wieder muss Menia beweisen, dass sie nicht nur Antworten fordert, sondern bereit ist, deren Preis zu tragen.'
@@ -245,7 +245,7 @@ const EVENTS=[
     post:'Nach dem Gefecht spricht Lilou von den Vengeressen und von einer Frau, deren Geschichte von Verrat, Tod und Vergeltung geprägt ist. Menia folgt dieser Spur zu Alice Merveilleux.'
   },
   {
-    id:'act5_alice',act:5,order:3,title:'Die Bestie',x:25.0,y:76.0,type:'encounter',encounter:'act5_alice',
+    id:'act5_alice',act:5,order:3,title:'Die Bestie',x:48.5,y:76.0,type:'encounter',encounter:'act5_alice',
     text:[
       'Alice Merveilleux ist keine zufällige Gegnerin auf Menias Weg. Ihre Vergangenheit ist von einem Auftrag, Verrat und einem Tod geprägt, der nicht das Ende ihrer Geschichte bedeutete.',
       'Menia erkennt in Alice erneut das Prinzip, das sie seit Evelyn, Mira und Thal verfolgt: Eine Göttin findet jemanden an dessen tiefstem Verlustpunkt und bietet einen Weg zurück – doch dieser Weg bindet die Auserwählte zugleich an einen größeren Plan.'
@@ -253,7 +253,7 @@ const EVENTS=[
     post:'Alice bestätigt Menias Verdacht nicht mit einer einfachen Antwort. Doch ihre Geschichte führt tiefer in die Ordnung der Vengeressen. Im Zentrum steht die Rachsucht selbst – und dahinter die Baronesse, die einst Effrayer war und als Vengeresse zurückkehrte.'
   },
   {
-    id:'act5_rachsucht',act:5,order:4,title:'Rachsucht',x:21.0,y:66.0,type:'encounter',encounter:'act5_rachsucht',
+    id:'act5_rachsucht',act:5,order:4,title:'Rachsucht',x:59.0,y:75.0,type:'encounter',encounter:'act5_rachsucht',
     text:[
       'Je näher Menia dem inneren Mausoleum kommt, desto deutlicher wird, dass Rachsucht in der Unterwelt mehr als ein Gefühl ist. Sie ist Erinnerung, Antrieb und ein Teil jener Macht, durch die die Vengeressen an ihre Vergangenheit gebunden bleiben.',
       'Die Verteidiger des Mausoleums stellen Menia ein letztes Mal auf die Probe. Kiki bleibt dicht bei ihr, während Menia die Fragmente der fünf Welten bei sich trägt und versucht, die Verbindung zwischen Wiedergeburt, Göttinnen und Siegeln endgültig zu verstehen.'
@@ -261,7 +261,7 @@ const EVENTS=[
     post:'Hinter der letzten Verteidigung öffnet sich der Weg zum innersten Bereich des Mausoleums. Dort wartet Baronesse Effrayer. Menias Reise durch die fünf Welten erreicht ihren letzten großen Gegner.'
   },
   {
-    id:'act5_baronesse',act:5,order:5,title:'Baronesse Effrayer – Vengeresse',x:16.0,y:72.0,type:'boss',boss:'act5_baronesse',
+    id:'act5_baronesse',act:5,order:5,title:'Baronesse Effrayer – Vengeresse',x:71.0,y:71.0,type:'boss',boss:'act5_baronesse',
     text:[
       'Baronesse Effrayer steht im Zentrum des Mausoleums der Rachsucht. Ihre Geschichte von Rache und Wiedergeburt verbindet sie unmittelbar mit der Göttin der Unterwelt und mit jenem Muster, das Menia inzwischen in allen fünf Welten erkannt hat.',
       'Menia erklärt, dass die Göttinnen ihre Bezwingerinnen nicht zufällig wählen. Sie versprechen ihnen Leben, Wiederherstellung, Erlösung oder Vergeltung – genau das, wonach sie sich am stärksten sehnen – und bewegen sie damit dazu, an Apparaturen und Siegeln zu handeln.',

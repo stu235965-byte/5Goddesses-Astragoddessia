@@ -1,0 +1,8 @@
+const fs=require('fs'),vm=require('vm');let P=0,F=0;function t(n,c){if(c){P++;console.log('PASS',n)}else{F++;console.log('FAIL',n)}}
+global.window={};global.document={getElementById:()=>null,querySelector:()=>null};global.localStorage={getItem:()=>null,setItem:()=>{}};vm.runInThisContext(fs.readFileSync('5goddesses-datenbank.js','utf8'));vm.runInThisContext(fs.readFileSync('game-engine.js','utf8'));vm.runInThisContext(fs.readFileSync('story-encounter-decks.js','utf8'));vm.runInThisContext(fs.readFileSync('story-boss-decks.js','utf8'));vm.runInThisContext(fs.readFileSync('story-mode.js','utf8'));
+const S=window.G5StoryMode,E=window.G5Engine,I=window.G5STORY_ENCOUNTER_DECKS,B=window.G5STORY_BOSS_DECKS,ev=S.events();
+t('Alle 5 Akte vorhanden',new Set(ev.map(x=>x.act)).size===5);t('32 Storyereignisse vorhanden',ev.length===32);t('Neue Ringwelten-Karte vorhanden',fs.existsSync('story-weltkarte.png')&&fs.statSync('story-weltkarte.png').size>100000);
+t('Alle Punkte innerhalb Karte',ev.every(x=>x.x>=0&&x.x<=100&&x.y>=0&&x.y<=100));
+for(const x of ev){if(x.type==='encounter'){const d=I.get(x.encounter);t(x.id+' Deck gültig',!!d&&E.validDeck(d));try{t(x.id+' startGame',!!E.startGame(S.playerDeck(),d,0))}catch(e){console.error(x.id,e.message);t(x.id+' startGame',false)}}if(x.type==='boss'){const d=B.get(x.boss);t(x.id+' Bossdeck gültig',!!d&&E.validDeck(d));try{t(x.id+' startGame',!!E.startGame(S.playerDeck(),d,0))}catch(e){console.error(x.id,e.message);t(x.id+' startGame',false)}}}
+const ids=ev.map(x=>x.id);t('Aktfolge vollständig',ids[0]==='act1_prolog'&&ids.at(-1)==='act5_baronesse');
+console.log(`RESULT ${P} PASS / ${F} FAIL`);process.exitCode=F?1:0;
