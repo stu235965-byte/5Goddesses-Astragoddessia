@@ -1604,7 +1604,11 @@ body.menu-background #page-decks > .intro{
 .fan-notice[hidden]{display:none!important}
 .fan-notice-card{
   width:min(560px,100%);
+  max-height:calc(100dvh - 40px);
   padding:30px 26px 24px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
   border:1px solid rgba(222,188,75,.82);
   border-radius:16px;
   background:linear-gradient(180deg,rgba(26,24,20,.97),rgba(12,12,12,.98));
@@ -1619,16 +1623,16 @@ body.menu-background #page-decks > .intro{
   margin-bottom:8px;
 }
 .fan-notice-card h2{margin:0 0 18px;font-size:28px;letter-spacing:.04em}
-.fan-notice-text{color:#e6e1d6;line-height:1.55;text-align:left}
+.fan-notice-text{color:#e6e1d6;line-height:1.55;text-align:left;overflow-y:auto;min-height:0;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-right:6px}
 .fan-notice-text p{margin:0 0 14px}
 .fan-notice-signature{text-align:center!important;color:#d9bb58;font-weight:700;margin-top:20px!important}
-.fan-notice-accept{width:100%;margin-top:6px;min-height:48px;font-size:16px}
+.fan-notice-accept{width:100%;margin-top:10px;min-height:48px;font-size:16px;flex:0 0 auto}
 body.fan-notice-open{overflow:hidden}
 @media(max-width:700px){
   .brand-wrap{flex-wrap:wrap}
   .music-toggle{margin-left:4px;font-size:11px;padding:4px 7px}
   .fan-notice{padding:14px}
-  .fan-notice-card{padding:24px 18px 20px}
+  .fan-notice-card{padding:20px 18px 16px;max-height:calc(100dvh - 28px)}
   .fan-notice-card h2{font-size:24px}
 }
 
