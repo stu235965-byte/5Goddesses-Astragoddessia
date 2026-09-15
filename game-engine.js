@@ -3339,6 +3339,12 @@ function reveal(state,slot){
     if(!['supply','resupply'].includes(currentPhase(state).id)){
       return {ok:false,msg:'Verdeckte Waffe, Schild, Rüstung oder Kopfschutz kann nur in Versorgungs- oder Nachschubphase aktiviert werden.'};
     }
+    // v2.17: Ausrüstung darf nicht aufgedeckt werden, wenn keine eigene
+    // Bezwingerin existiert. Andernfalls entsteht pendingEquipment ohne
+    // mögliches Ziel und die KI (bzw. ein Mensch) kann dauerhaft festhängen.
+    if(!(p.bezSlots||[]).some(Boolean)){
+      return {ok:false,msg:'Ausrüstung kann erst aufgedeckt werden, wenn eine eigene Bezwingerin im Spiel ist.'};
+    }
     r.faceDown=false;
     state.pendingEquipment={owner:p.index,azrSlot:slot,kind:equipmentKind(c)};
     log(state,`${p.name} deckt ${c?.name||'eine Ausrüstung'} auf. Sie muss jetzt sofort an eine Bezwingerin angelegt werden.`);

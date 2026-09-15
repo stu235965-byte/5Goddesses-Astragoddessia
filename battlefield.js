@@ -1,6 +1,6 @@
 (() => {
 'use strict';
-window.G5_BATTLEFIELD_BUILD='2.16';
+window.G5_BATTLEFIELD_BUILD='2.17';
 
 const G5_PROFILE_NAME_KEY='5goddesses_profilname_v1';
 function battleProfileName(){
@@ -61,7 +61,7 @@ function aiMayAutoStep(){
   return true;
 }
 function scheduleAI(delay=450){if(!aiMayAutoStep())return;clearTimeout(aiTimer);aiTimer=setTimeout(runAIStep,delay);}
-function runAIStep(){if(!aiIsActive())return;const r=window.G5AI.step(state);E().save(state);render(r?.msg||'KI-Gegner überlegt …');if(r?.wait)return;if(r?.unsupported){message('Die KI konnte eine seltene Kartenauswahl nicht automatisch auflösen.','warn');return;}if(aiIsActive())scheduleAI(380);}
+function runAIStep(){if(!aiIsActive())return;const r=window.G5AI.step(state);E().save(state);render(r?.msg||'KI-Gegner überlegt …');if(r?.unsupported){message('Die KI konnte eine seltene Kartenauswahl nicht automatisch auflösen. Bitte Gefecht nicht neu starten; dieser Zustand wurde als KI-Blockade erkannt.','warn');return;}if(r?.wait)return;if(aiIsActive())scheduleAI(380);}
 let aiDefenseTimer=null;
 function aiIsDefender(){return !!state?.attack && Number(1-state.activePlayer)===Number(state.aiPlayer??1);}
 function scheduleAIDefense(delay=500){if(!aiIsDefender())return;clearTimeout(aiDefenseTimer);aiDefenseTimer=setTimeout(()=>{if(!aiIsDefender()||phase()?.id!=='rush')return;let last=null;for(let guard=0;guard<20;guard++){const r=window.G5AI?.defenseStep?.(state);if(!r?.acted)break;last=r;if(!state.pendingBezEffect&&!state.pendingDamage&&!E().instinctWindowNeeded?.(state)&&!(state.attack&&phase()?.id==='rush'))break;}E().save(state);render(last?.msg||'KI-Gegner lässt den Angriff zu.');},delay);}

@@ -41,6 +41,15 @@ function resolvePending(state){
     const targets=[0,1]
       .filter(i=>p.bezSlots[i])
       .sort((a,b)=>runtimeThreat(state,AI_INDEX,b)-runtimeThreat(state,AI_INDEX,a));
+    // v2.17 Recovery für alte/gespeicherte Zustände: Wurde eine Ausrüstung
+    // bereits aufgedeckt und danach existiert kein legales Ziel mehr, wird
+    // die Karte wieder verdeckt und die blockierende Auswahl aufgehoben.
+    if(!targets.length){
+      const stuck=p.azr?.[q.azrSlot];
+      if(stuck)stuck.faceDown=true;
+      state.pendingEquipment=null;
+      return {ok:true,msg:'KI-Gegner kann die Ausrüstung derzeit nicht anlegen und lässt sie verdeckt liegen.'};
+    }
     for(const target of targets){
       const rr=E().equipFromAzr(state,q.azrSlot,target,q.kind);
       if(rr?.ok)return rr;
