@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 const KEY='5goddesses_story_progress_v1';
-const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt',3:'Akt III – Blutlinien durch die Zeit',4:'Akt IV – Die Leere'};
+const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt',3:'Akt III – Blutlinien durch die Zeit',4:'Akt IV – Die Leere',5:'Akt V – Die Rachsucht der Göttinnen'};
 function actTitle(act){return ACTS[Number(act)]||`Akt ${act}`;}
 
 const EVENTS=[
@@ -219,13 +219,64 @@ const EVENTS=[
     ],
     post:'Nach Thals Niederlage verdichtet sich Menias Verdacht: Die Apparaturen sind nicht bloß Werkzeuge oder Waffen. Sie stehen mit den Gefängnissen der Göttinnen und den Grenzen zwischen den Welten in Verbindung. Die Spur führt nun in die Unterwelt – zu Wiedergeburt, Rachsucht und den Vengeressen. Damit endet Akt IV.'
   }
+  ,{
+    id:'act5_prolog',act:5,order:0,title:'Hinab in die Unterwelt',x:39.0,y:73.0,type:'story',
+    text:[
+      'Thals Niederlage beantwortet Menias Fragen nicht – sie verändert sie. Die Apparaturen, die Kristalle und die Siegel weisen nun gemeinsam in die Unterwelt. Menia folgt der Spur mit Kiki durch einen Übergang, hinter dem dunkle Paläste, Mausoleen und roter Himmel warten.',
+      'Die Unterwelt wirkt nicht wie ein Reich des bloßen Todes. Überall begegnet Menia Spuren von Wiederkehr, Vergeltung und Erinnerungen, die sich weigern zu verschwinden. Gerade darin erkennt sie erneut das Muster der Göttinnen: Sie bieten ihren Auserwählten an, was diese am stärksten verloren haben.',
+      'Noch bevor Menia das Mausoleum der Rachsucht erreichen kann, stellt sich ihr Arcadia entgegen.'
+    ],
+    post:'Menia beginnt den letzten Abschnitt ihrer Reise. Die Spur der gefangenen Göttinnen führt durch die Vengeressen und ihre Geschichten – und jeder Schritt scheint näher an die Frage zu führen, weshalb die fünf Göttinnen überhaupt versiegelt wurden.'
+  },
+  {
+    id:'act5_arcadia',act:5,order:1,title:'Die stille Zerstörung',x:34.0,y:78.0,type:'encounter',encounter:'act5_arcadia',
+    text:[
+      'Arcadia bewacht einen der Wege tiefer in die Unterwelt. Menias Fragmente und ihre Verbindung zu mehreren Welten machen sie sofort verdächtig.',
+      'Menia versucht zu erklären, dass sie nicht gekommen ist, um die Ordnung der Unterwelt zu zerstören. Doch ihre Fragen nach den Göttinnen und den Vengeressen reichen aus, um Arcadia zum Kampf zu bewegen.'
+    ],
+    post:'Arcadia gibt den Weg frei. Ihre Hinweise führen Menia zum Mausoleum der Rachsucht und zu einer Heilpriesterin, deren Rolle in der Unterwelt weit über gewöhnliche Heilung hinausgeht: Lilou Guerir.'
+  },
+  {
+    id:'act5_lilou',act:5,order:2,title:'Die oberste Heilpriesterin',x:30.0,y:69.0,type:'encounter',encounter:'act5_lilou',
+    text:[
+      'Lilou Guerir begegnet Menia im Einflussbereich des Mausoleums. In einer Welt, in der Tod und Wiederkehr eng miteinander verbunden sind, besitzt Heilung eine andere Bedeutung als in Menias Heimat.',
+      'Lilou schützt die Geheimnisse der Unterwelt und zweifelt daran, dass Menia die Konsequenzen ihrer Suche versteht. Wieder muss Menia beweisen, dass sie nicht nur Antworten fordert, sondern bereit ist, deren Preis zu tragen.'
+    ],
+    post:'Nach dem Gefecht spricht Lilou von den Vengeressen und von einer Frau, deren Geschichte von Verrat, Tod und Vergeltung geprägt ist. Menia folgt dieser Spur zu Alice Merveilleux.'
+  },
+  {
+    id:'act5_alice',act:5,order:3,title:'Die Bestie',x:25.0,y:76.0,type:'encounter',encounter:'act5_alice',
+    text:[
+      'Alice Merveilleux ist keine zufällige Gegnerin auf Menias Weg. Ihre Vergangenheit ist von einem Auftrag, Verrat und einem Tod geprägt, der nicht das Ende ihrer Geschichte bedeutete.',
+      'Menia erkennt in Alice erneut das Prinzip, das sie seit Evelyn, Mira und Thal verfolgt: Eine Göttin findet jemanden an dessen tiefstem Verlustpunkt und bietet einen Weg zurück – doch dieser Weg bindet die Auserwählte zugleich an einen größeren Plan.'
+    ],
+    post:'Alice bestätigt Menias Verdacht nicht mit einer einfachen Antwort. Doch ihre Geschichte führt tiefer in die Ordnung der Vengeressen. Im Zentrum steht die Rachsucht selbst – und dahinter die Baronesse, die einst Effrayer war und als Vengeresse zurückkehrte.'
+  },
+  {
+    id:'act5_rachsucht',act:5,order:4,title:'Rachsucht',x:21.0,y:66.0,type:'encounter',encounter:'act5_rachsucht',
+    text:[
+      'Je näher Menia dem inneren Mausoleum kommt, desto deutlicher wird, dass Rachsucht in der Unterwelt mehr als ein Gefühl ist. Sie ist Erinnerung, Antrieb und ein Teil jener Macht, durch die die Vengeressen an ihre Vergangenheit gebunden bleiben.',
+      'Die Verteidiger des Mausoleums stellen Menia ein letztes Mal auf die Probe. Kiki bleibt dicht bei ihr, während Menia die Fragmente der fünf Welten bei sich trägt und versucht, die Verbindung zwischen Wiedergeburt, Göttinnen und Siegeln endgültig zu verstehen.'
+    ],
+    post:'Hinter der letzten Verteidigung öffnet sich der Weg zum innersten Bereich des Mausoleums. Dort wartet Baronesse Effrayer. Menias Reise durch die fünf Welten erreicht ihren letzten großen Gegner.'
+  },
+  {
+    id:'act5_baronesse',act:5,order:5,title:'Baronesse Effrayer – Vengeresse',x:16.0,y:72.0,type:'boss',boss:'act5_baronesse',
+    text:[
+      'Baronesse Effrayer steht im Zentrum des Mausoleums der Rachsucht. Ihre Geschichte von Rache und Wiedergeburt verbindet sie unmittelbar mit der Göttin der Unterwelt und mit jenem Muster, das Menia inzwischen in allen fünf Welten erkannt hat.',
+      'Menia erklärt, dass die Göttinnen ihre Bezwingerinnen nicht zufällig wählen. Sie versprechen ihnen Leben, Wiederherstellung, Erlösung oder Vergeltung – genau das, wonach sie sich am stärksten sehnen – und bewegen sie damit dazu, an Apparaturen und Siegeln zu handeln.',
+      'Die Baronesse weist Menias Schlussfolgerungen zurück. Zwischen den Monumenten der Toten kommt es zum letzten Kampf dieser Reise.'
+    ],
+    post:'Nach dem Fall der Baronesse reagiert Menias Kristall auf die Energien aller fünf Welten. Oberwelt, Astralwelt, Mittelwelt, Zwischenwelt und Unterwelt antworten einander. Menia hat die fünf Göttinnen nicht befreit und ihr größtes Rätsel nicht gelöst – doch sie versteht nun, dass ihre Gefangenschaft, die Apparaturen und die Versprechen an ihre Auserwählten Teile desselben Systems sind. Mit Kiki kehrt sie zu ihrer Chronik zurück. Ihre nächste Frage lautet nicht mehr, woher die Energie kommt, sondern warum die Göttinnen gefangen wurden – und was die Schöpfungsmacht damit zu tun hat.'
+  }
+
 ];
 
 const STORY_POOL_KEY='5goddesses_story_pool_v1';
 const STORY_DECK_KEY='5goddesses_story_deck_v1';
 
-function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,act3Finished:false,act4Finished:false,storyFinished:false};}
-function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* Migration alter Story-Spielstände. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.10: Wer Akt II in v2.09 abgeschlossen hat, startet direkt mit Akt III. */if(p.act2Finished&&p.completed.includes('act2_strikelyn')&&!p.act3Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act2_strikelyn'))){p.index=EVENTS.findIndex(e=>e.id==='act3_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.11: Wer Akt III in v2.10 abgeschlossen hat, startet direkt mit Akt IV. */if(p.act3Finished&&p.completed.includes('act3_nemesis')&&!p.act4Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act3_nemesis'))){p.index=EVENTS.findIndex(e=>e.id==='act4_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}save(p);return p;}catch{return defaultProgress();}}
+function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,act3Finished:false,act4Finished:false,act5Finished:false,storyFinished:false};}
+function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* Migration alter Story-Spielstände. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.10: Wer Akt II in v2.09 abgeschlossen hat, startet direkt mit Akt III. */if(p.act2Finished&&p.completed.includes('act2_strikelyn')&&!p.act3Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act2_strikelyn'))){p.index=EVENTS.findIndex(e=>e.id==='act3_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.11: Wer Akt III in v2.10 abgeschlossen hat, startet direkt mit Akt IV. */if(p.act3Finished&&p.completed.includes('act3_nemesis')&&!p.act4Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act3_nemesis'))){p.index=EVENTS.findIndex(e=>e.id==='act4_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.12: abgeschlossener Akt IV startet Akt V. */if(p.act4Finished&&p.completed.includes('act4_thal')&&!p.act5Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act4_thal'))){p.index=EVENTS.findIndex(e=>e.id==='act5_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}save(p);return p;}catch{return defaultProgress();}}
 function save(p){localStorage.setItem(KEY,JSON.stringify(p));}
 function eventById(id){return EVENTS.find(e=>e.id===id)||null;}
 function current(p){return EVENTS[Math.min(p.index,EVENTS.length-1)]||EVENTS[0];}
@@ -390,10 +441,10 @@ function render(){
   EVENTS.forEach((e,i)=>{if(i>p.index)return;const b=document.createElement('button');b.type='button';b.className='story-node';b.style.left=`${e.x}%`;b.style.top=`${e.y}%`;b.setAttribute('aria-label',e.title);const complete=p.completed.includes(e.id);
     if(complete){b.classList.add('completed');b.disabled=true;b.innerHTML='<span>✓</span>';}
     else if(i===p.index&&!p.storyFinished){b.classList.add('current');b.innerHTML=`<span>${e.type==='boss'?'★':'!'}</span><small>${esc(e.title)}</small>`;b.onclick=()=>{if(p.rewardPending===e.id)showReward(e);else showEvent(e,p.pendingPost===e.id?'post':'intro');};}root.appendChild(b);});
-  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt IV abgeschlossen – Fortsetzung folgt':actTitle(active.act);
+  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Story abgeschlossen – Menias Chronik':actTitle(active.act);
   document.getElementById('storyChronicleContent').innerHTML=chronicleHtml(p);
   const poolCount=document.getElementById('storyPoolCount');if(poolCount)poolCount.textContent=`Story-Kartenpool: ${storyPoolSet().size} Karten`;
-  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt IV abgeschlossen</strong><span>Menias Spur führt nun in die Unterwelt. Wiedergeburt, Rachsucht und die Vengeressen warten in Akt V.</span>';root.appendChild(done);}
+  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt V abgeschlossen</strong><span>Menias Reise durch die fünf Welten ist abgeschlossen. Die Chronik bleibt als Rückblick erhalten.</span>';root.appendChild(done);}
 }
 function open(){render();const p=load(),e=current(p);if(p.rewardPending===e.id)setTimeout(()=>showReward(e),60);}
 function reset(){if(!confirm('Story-Testfortschritt wirklich zurücksetzen? Dabei werden auch alle gewonnenen Storykarten und Änderungen an Menias Storydeck entfernt.'))return;localStorage.removeItem(KEY);localStorage.removeItem(STORY_POOL_KEY);localStorage.removeItem(STORY_DECK_KEY);window.G5Engine?.clear?.();closeDialog();closeReward();closeDeckBuilder();render();}
