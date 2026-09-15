@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 const KEY='5goddesses_story_progress_v1';
-const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt'};
+const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt',3:'Akt III – Blutlinien durch die Zeit'};
 function actTitle(act){return ACTS[Number(act)]||`Akt ${act}`;}
 
 const EVENTS=[
@@ -103,14 +103,79 @@ const EVENTS=[
       'Menia weigert sich umzukehren. Damit entscheidet der Kampf, ob sie ihre Suche fortsetzen kann.'
     ],
     post:'Nach Strikelyns Niederlage erhält Menia Zugang zu einer Spur, die noch weiter zurückreicht. In den Aufzeichnungen findet sie keine einfache Erklärung für die Göttin – sondern eine Verbindung in die Mittelwelt und den Namen Mira Masako. Eine zweite Linie reicht Jahrhunderte weiter bis zu Skorpia Masako. Akt II endet mit einer neuen Frage: Wie können dieselben Spuren nicht nur Welten, sondern auch Zeiten miteinander verbinden?'
+  },
+  {
+    id:'act3_prolog',act:3,order:0,title:'Spuren in die Mittelwelt',x:72.5,y:31.5,type:'story',
+    text:[
+      'Strikelyns Archive führen Menia aus der Astralwelt in die Mittelwelt. Die Aufzeichnungen nennen Mira Masako vom Chikara-Clan – eine Kriegerin, deren Geschichte mit Astrana-Energie, Tod und Wiederkehr verbunden ist.',
+      'Die Mittelwelt wirkt zunächst vertrauter als die schwebenden Landschaften Astranums. Doch zwischen befestigten Städten, alten Orden und den Küstenreichen liegen dieselben Energiespuren, denen Menia seit ihrer Bibliothek folgt.',
+      'Kiki kreist über dem Weg, während Menia versucht, Miras Spur aufzunehmen. Noch bevor sie den Chikara-Clan erreicht, gerät sie jedoch in die Konflikte dieser Welt.'
+    ],
+    post:'Menia folgt den Hinweisen durch die Mittelwelt. Der Weg zu Mira führt zunächst an Kriegerinnen vorbei, die einer Fremden aus der Oberwelt keinen freien Durchmarsch gewähren.'
+  },
+  {
+    id:'act3_jeanne',act:3,order:1,title:'Glut des Morgens',x:76.0,y:35.0,type:'encounter',encounter:'act3_jeanne',
+    text:[
+      'Jeanne d’Arque stellt sich Menia auf ihrer Reise entgegen. Für Jeanne ist Menias Auftauchen mit fremden Fragmenten und Fragen nach alten Energien Grund genug, ihre Absichten zu prüfen.',
+      'Menia will keine Feindschaft mit der Mittelwelt beginnen, doch sie kann ihre Suche auch nicht abbrechen. Wieder entscheidet ein Gefecht darüber, ob sie ihren Weg fortsetzen darf.'
+    ],
+    post:'Jeanne erkennt Menias Entschlossenheit an. Ihre Hinweise führen Menia weiter in Richtung der Küsten und zu einer Bezwingerin, deren Wege weit weniger geordnet verlaufen: Calypso.'
+  },
+  {
+    id:'act3_calypso',act:3,order:2,title:'Die Freibeuterin',x:91.0,y:49.0,type:'encounter',encounter:'act3_calypso',
+    text:[
+      'An den Küsten der Mittelwelt kreuzt Calypso Menias Weg. Die Freibeuterin besitzt Informationen über Bewegungen zwischen den Regionen – doch Wissen ist für sie keine kostenlose Ware.',
+      'Aus Verhandlung wird Herausforderung. Menia muss beweisen, dass die Spur, der sie folgt, mehr wert ist als ein weiteres Gerücht aus den fünf Welten.'
+    ],
+    post:'Calypso nennt Menia schließlich den Weg zum Einflussgebiet des Chikara-Clans. Zum ersten Mal scheint Mira Masako nicht mehr nur ein Name aus Strikelyns Archiven zu sein.'
+  },
+  {
+    id:'act3_mira',act:3,order:3,title:'Der schneidende Wind',x:84.2,y:37.0,type:'encounter',encounter:'act3_mira',
+    text:[
+      'Menia findet Mira Masako. Die Kriegerin des Chikara-Clans begegnet der Fremden wachsam, besonders als Menia nach ihrer Vergangenheit und ihrer Verbindung zur Göttin der Mittelwelt fragt.',
+      'Menia spricht von Wiederbelebung, Astrana-Energie und einer Blutlinie, die laut den Archiven weit über Miras eigene Zeit hinausreicht. Mira hat keinen Grund, dieser Geschichte sofort zu glauben.'
+    ],
+    post:'Nach dem Kampf erzählt Mira von ihrem Tod, ihrer Rückkehr und der Macht, die sie wieder ins Leben brachte. Menia erkennt darin dasselbe Muster, das sie bereits bei Evelyn gesehen hat. Doch Miras Blutlinie führt noch weiter – zu einem Namen aus einer Zeit, die noch gar nicht gekommen ist: Skorpia Masako.'
+  },
+  {
+    id:'act3_zukunft',act:3,order:4,title:'Fremde in der Zukunft',x:62.5,y:50.0,type:'encounter',encounter:'act3_zukunft',
+    text:[
+      'Die Spur der Masakos endet nicht an einem Ort, sondern an einer anderen Zeit. Menia gelangt nach Genova Toshi – in eine Zukunft, in der Technologie, Astrana und die Kräfte der Zwischenwelt ineinandergreifen.',
+      'Dort trifft sie auf Trix Sigma. Portale und Verschiebungen von Raum und Zeit machen schnell deutlich, dass Menias vertraute Regeln hier kaum noch gelten. Trix hält die Fremde aus der Vergangenheit zunächst für eine weitere Störung, die beseitigt werden muss.'
+    ],
+    post:'Trix’ Spuren führen Menia tiefer in die Zukunft. Hinweise auf den Chikara-Clan existieren noch immer – aber zugleich taucht ein neues Wort immer häufiger auf: Mornak.'
+  },
+  {
+    id:'act3_bruet',act:3,order:5,title:'Flüstern der Brut',x:80.0,y:84.0,type:'encounter',encounter:'act3_bruet',
+    text:[
+      'Noch bevor Menia Skorpia erreicht, stößt sie auf die Vorzeichen einer größeren Bedrohung. Das Flüstern der Brut kündigt Mornak an, und aus einzelnen Spuren wird das Bild eines Schwarms.',
+      'Menia muss sich durch die Brut kämpfen, während Kiki über den dunklen Formationen kreist. Was hier entsteht, ist kein lokaler Konflikt – etwas sammelt Kräfte in einem Ausmaß, das ganze Welten bedrohen könnte.'
+    ],
+    post:'Hinter den Spuren der Brut findet Menia endlich Skorpia Masako. Doch der Name Mira macht die Begegnung nicht leichter. Für Skorpia klingt Menias Geschichte unmöglich – und gefährlich.'
+  },
+  {
+    id:'act3_skorpia',act:3,order:6,title:'Skorpia Masako – Stahlherz des Clans',x:77.0,y:58.0,type:'boss',boss:'act3_skorpia',
+    text:[
+      'Skorpia Masako steht Menia als Nachfahrin einer Blutlinie gegenüber, die Menia in der Mittelwelt selbst kennengelernt hat. Jahrhunderte trennen Skorpia von Mira – und genau deshalb hält sie Menias Behauptungen zunächst für eine Provokation.',
+      'Menia zeigt ihre Aufzeichnungen und spricht von Mira, Astrana und der Göttin. Skorpia bleibt misstrauisch. Bevor aus den beiden Verbündete werden können, muss Menia beweisen, dass sie weder Miras Namen missbraucht noch Teil der Mornak-Bedrohung ist.'
+    ],
+    post:'Nach ihrer Niederlage hört Skorpia Menia endlich zu. Die Aufzeichnungen über Mira und die gemeinsamen Spuren überzeugen sie. Aus Gegnerinnen werden widerwillige Verbündete. Skorpia zeigt Menia, was sie selbst verfolgt hat: eine Mornak-Schwarmflotte – und im Zentrum der Bedrohung Nemesis.'
+  },
+  {
+    id:'act3_nemesis',act:3,order:7,title:'Nemesis – Geißel der Galaxie',x:82.0,y:73.5,type:'boss',boss:'act3_nemesis',
+    text:[
+      'Menia und Skorpia folgen der Schwarmflotte in den Nemesis-Sektor. Dort wartet Nemesis nicht allein: Die Mornak-Brut ist Teil ihrer Macht, und jeder Angriff droht im Schwarm zu verschwinden.',
+      'Für Menia ist dies mehr als ein weiterer Kampf. Die Mornak verbinden die Zukunft, die Zwischenwelt und jene rätselhaften Kräfte, die ihre Reise seit der Oberwelt begleiten. Gemeinsam mit Skorpia stellt sie sich der Geißel der Galaxie.'
+    ],
+    post:'Nemesis fällt und der Schwarm zieht sich zurück. Doch während Menia und Skorpia die Spuren des Kampfes untersuchen, reagiert Menias Kristall erneut. Ein beschädigter Übergang führt tiefer in die Zwischenwelt – zur Leere, zu den Apparaturen und zu Thal Ziris. Akt III endet dort, wo die nächste Frage beginnt: Was wurde in der Zwischenwelt versiegelt?' 
   }
 ];
 
 const STORY_POOL_KEY='5goddesses_story_pool_v1';
 const STORY_DECK_KEY='5goddesses_story_deck_v1';
 
-function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,storyFinished:false};}
-function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* v2.09: abgeschlossene v1.98–v2.08-Akt-I-Spielstände direkt zu Akt II migrieren. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;save(p);}return p;}catch{return defaultProgress();}}
+function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,act3Finished:false,storyFinished:false};}
+function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* Migration alter Story-Spielstände. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.10: Wer Akt II in v2.09 abgeschlossen hat, startet direkt mit Akt III. */if(p.act2Finished&&p.completed.includes('act2_strikelyn')&&!p.act3Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act2_strikelyn'))){p.index=EVENTS.findIndex(e=>e.id==='act3_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}save(p);return p;}catch{return defaultProgress();}}
 function save(p){localStorage.setItem(KEY,JSON.stringify(p));}
 function eventById(id){return EVENTS.find(e=>e.id===id)||null;}
 function current(p){return EVENTS[Math.min(p.index,EVENTS.length-1)]||EVENTS[0];}
@@ -275,10 +340,10 @@ function render(){
   EVENTS.forEach((e,i)=>{if(i>p.index)return;const b=document.createElement('button');b.type='button';b.className='story-node';b.style.left=`${e.x}%`;b.style.top=`${e.y}%`;b.setAttribute('aria-label',e.title);const complete=p.completed.includes(e.id);
     if(complete){b.classList.add('completed');b.disabled=true;b.innerHTML='<span>✓</span>';}
     else if(i===p.index&&!p.storyFinished){b.classList.add('current');b.innerHTML=`<span>${e.type==='boss'?'★':'!'}</span><small>${esc(e.title)}</small>`;b.onclick=()=>{if(p.rewardPending===e.id)showReward(e);else showEvent(e,p.pendingPost===e.id?'post':'intro');};}root.appendChild(b);});
-  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt II abgeschlossen – Fortsetzung folgt':actTitle(active.act);
+  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt III abgeschlossen – Fortsetzung folgt':actTitle(active.act);
   document.getElementById('storyChronicleContent').innerHTML=chronicleHtml(p);
   const poolCount=document.getElementById('storyPoolCount');if(poolCount)poolCount.textContent=`Story-Kartenpool: ${storyPoolSet().size} Karten`;
-  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt II abgeschlossen</strong><span>Menias neue Spur führt in die Mittelwelt und zur Blutlinie der Masakos. Akt III folgt in einem späteren Story-Ausbau.</span>';root.appendChild(done);}
+  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt III abgeschlossen</strong><span>Nach Nemesis führt Menias Spur tiefer in die Zwischenwelt. Die Leere, Thal Ziris und die Apparaturen warten in Akt IV.</span>';root.appendChild(done);}
 }
 function open(){render();const p=load(),e=current(p);if(p.rewardPending===e.id)setTimeout(()=>showReward(e),60);}
 function reset(){if(!confirm('Story-Testfortschritt wirklich zurücksetzen? Dabei werden auch alle gewonnenen Storykarten und Änderungen an Menias Storydeck entfernt.'))return;localStorage.removeItem(KEY);localStorage.removeItem(STORY_POOL_KEY);localStorage.removeItem(STORY_DECK_KEY);window.G5Engine?.clear?.();closeDialog();closeReward();closeDeckBuilder();render();}
