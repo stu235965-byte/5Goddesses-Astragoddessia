@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 const KEY='5goddesses_story_progress_v1';
-const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt',3:'Akt III – Blutlinien durch die Zeit'};
+const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt',3:'Akt III – Blutlinien durch die Zeit',4:'Akt IV – Die Leere'};
 function actTitle(act){return ACTS[Number(act)]||`Akt ${act}`;}
 
 const EVENTS=[
@@ -168,14 +168,64 @@ const EVENTS=[
       'Für Menia ist dies mehr als ein weiterer Kampf. Die Mornak verbinden die Zukunft, die Zwischenwelt und jene rätselhaften Kräfte, die ihre Reise seit der Oberwelt begleiten. Gemeinsam mit Skorpia stellt sie sich der Geißel der Galaxie.'
     ],
     post:'Nemesis fällt und der Schwarm zieht sich zurück. Doch während Menia und Skorpia die Spuren des Kampfes untersuchen, reagiert Menias Kristall erneut. Ein beschädigter Übergang führt tiefer in die Zwischenwelt – zur Leere, zu den Apparaturen und zu Thal Ziris. Akt III endet dort, wo die nächste Frage beginnt: Was wurde in der Zwischenwelt versiegelt?' 
+  },
+  {
+    id:'act4_prolog',act:4,order:0,title:'Jenseits des beschädigten Übergangs',x:68.0,y:58.0,type:'story',
+    text:[
+      'Nach Nemesis bleibt ein beschädigter Übergang zurück. Menias Kristall reagiert darauf stärker als auf jedes gewöhnliche Portal. Die Signatur führt nicht zurück in die Mittelwelt, sondern tiefer in die Zwischenwelt.',
+      'Hinter dem Übergang verändert sich die Umgebung. Raum und Entfernung wirken unzuverlässig, während dunkle Bereiche jede vertraute Form von Energie zu verschlucken scheinen. Menia erkennt dieselben Spuren, die bereits bei Strahl des Vergessens, den Portalen und den Apparaturen aufgetaucht sind.',
+      'Skorpias Jagd auf die Mornak endet hier vorerst. Menia folgt der neuen Spur mit Kiki weiter – zu einer Frau, die sich zwischen Welten bewegen kann: Serinith Solthar.'
+    ],
+    post:'Menia betritt einen Bereich der Zwischenwelt, in dem selbst ihre bisherigen Karten kaum Orientierung geben. Wenn jemand die Übergänge und ihre Regeln versteht, dann die Weltenwanderin.'
+  },
+  {
+    id:'act4_serinith',act:4,order:1,title:'Die Weltenwanderin',x:62.0,y:54.0,type:'encounter',encounter:'act4_serinith',
+    text:[
+      'Serinith Solthar kennt Wege, die für andere Bezwingerinnen nicht existieren. Menias Auftauchen mit Fragmenten aus mehreren Welten macht sie jedoch misstrauisch.',
+      'Menia braucht Seriniths Wissen über Portale und die Leere. Serinith will zuerst wissen, ob Menia überhaupt in der Lage ist, die Gefahren hinter diesen Übergängen zu überstehen.'
+    ],
+    post:'Serinith erkennt Menias Entschlossenheit an. Sie bestätigt, dass die Störungen mit alten Übergängen und den Strukturen um Khar Zirah zusammenhängen. Eine weitere Spur führt zu Trix Sigma.'
+  },
+  {
+    id:'act4_trix',act:4,order:2,title:'Rebellin der Leere',x:66.5,y:49.0,type:'encounter',encounter:'act4_trix',
+    text:[
+      'Menia trifft erneut auf Trix Sigma. Diesmal geht es nicht um die Verwirrung einer Fremden in der Zukunft, sondern um die Leere selbst.',
+      'Trix kennt ihre Gefahren und weigert sich, Menia ungehindert tiefer vordringen zu lassen. Portale, Positionswechsel und die Kräfte der Leere machen das Gefecht zu einer Prüfung der Regeln, die Menia erst zu verstehen beginnt.'
+    ],
+    post:'Nach dem Kampf erhält Menia Hinweise auf Chronokrypta, Khar Zirah und eine Verbindung zu Thal Ziris. In den Aufzeichnungen taucht außerdem ein Name auf, den Menia bereits aus einer völlig anderen Blutlinie kennt: Chikara.'
+  },
+  {
+    id:'act4_lilith',act:4,order:3,title:'Das unmögliche Erbe',x:72.0,y:54.0,type:'encounter',encounter:'act4_lilith',
+    text:[
+      'Die nächste Spur führt Menia zu Lilith. Was sie dort entdeckt, passt nicht in das Bild, das sie sich seit Mira und Skorpia vom Chikara-Erbe gemacht hat.',
+      'Menia versucht die Verbindung zu verstehen, doch Lilith hat keinen Grund, einer Fremden ihre Geschichte offenzulegen. Das Rätsel um das Erbe bleibt zunächst hinter einem weiteren Gefecht verborgen.'
+    ],
+    post:'Menia kann die Chikara-Verbindung nicht abschließend erklären. Sie hält sie in ihrer Chronik als ungelöstes Rätsel fest. Wichtiger ist eine andere Spur: Sekh\'Nehet – ein verlorener Ort, dessen Geschichte unmittelbar mit Thal Ziris verbunden ist.'
+  },
+  {
+    id:'act4_sekh',act:4,order:4,title:"Die Ruinen von Sekh'Nehet",x:58.0,y:61.0,type:'encounter',encounter:'act4_sekh',
+    text:[
+      "Sekh'Nehet ist kein gewöhnlicher Schauplatz. Menia findet die Spuren einer zerstörten Ordnung, alter Experimente und Kräfte, die mit der Leere in Berührung gekommen sind.",
+      'Zwischen den Ruinen steht D.E.A.T.H. ihrem weiteren Weg entgegen. Die Konstruktion erinnert Menia daran, dass Automata und die rätselhaften Systeme der fünf Welten weit stärker miteinander verflochten sind, als sie in der Oberwelt angenommen hatte.'
+    ],
+    post:"Hinter D.E.A.T.H. findet Menia die entscheidende Spur: Thal Ziris versucht, verlorene Strukturen und Apparaturen zusammenzuführen. Im Zentrum steht das Versprechen, Sekh'Nehet wiederherzustellen."
+  },
+  {
+    id:'act4_thal',act:4,order:5,title:'Thal Ziris – Pharaonin der Zeit',x:55.0,y:68.0,type:'boss',boss:'act4_thal',
+    text:[
+      "Thal Ziris wartet zwischen den Überresten von Sekh'Nehet. Ihre Suche nach den Apparaturen entspringt nicht bloßer Machtgier: Sie glaubt, damit ihre verlorene Heimat zurückbringen zu können.",
+      'Menia erkennt jedoch das Muster, das sie seit Evelyn und Mira verfolgt. Wieder hat eine Göttin einer Bezwingerin genau das versprochen, wonach sie sich am stärksten sehnt – und verlangt dafür Handlungen, deren Folgen weit über eine einzelne Welt hinausreichen.',
+      'Als Menia die Apparaturen als Teile eines größeren Siegelsystems deutet und Thal vor der Manipulation warnt, endet das Gespräch im Kampf.'
+    ],
+    post:'Nach Thals Niederlage verdichtet sich Menias Verdacht: Die Apparaturen sind nicht bloß Werkzeuge oder Waffen. Sie stehen mit den Gefängnissen der Göttinnen und den Grenzen zwischen den Welten in Verbindung. Die Spur führt nun in die Unterwelt – zu Wiedergeburt, Rachsucht und den Vengeressen. Damit endet Akt IV.'
   }
 ];
 
 const STORY_POOL_KEY='5goddesses_story_pool_v1';
 const STORY_DECK_KEY='5goddesses_story_deck_v1';
 
-function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,act3Finished:false,storyFinished:false};}
-function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* Migration alter Story-Spielstände. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.10: Wer Akt II in v2.09 abgeschlossen hat, startet direkt mit Akt III. */if(p.act2Finished&&p.completed.includes('act2_strikelyn')&&!p.act3Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act2_strikelyn'))){p.index=EVENTS.findIndex(e=>e.id==='act3_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}save(p);return p;}catch{return defaultProgress();}}
+function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,act3Finished:false,act4Finished:false,storyFinished:false};}
+function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* Migration alter Story-Spielstände. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.10: Wer Akt II in v2.09 abgeschlossen hat, startet direkt mit Akt III. */if(p.act2Finished&&p.completed.includes('act2_strikelyn')&&!p.act3Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act2_strikelyn'))){p.index=EVENTS.findIndex(e=>e.id==='act3_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}/* v2.11: Wer Akt III in v2.10 abgeschlossen hat, startet direkt mit Akt IV. */if(p.act3Finished&&p.completed.includes('act3_nemesis')&&!p.act4Finished&&(p.storyFinished||p.index===EVENTS.findIndex(e=>e.id==='act3_nemesis'))){p.index=EVENTS.findIndex(e=>e.id==='act4_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;}save(p);return p;}catch{return defaultProgress();}}
 function save(p){localStorage.setItem(KEY,JSON.stringify(p));}
 function eventById(id){return EVENTS.find(e=>e.id===id)||null;}
 function current(p){return EVENTS[Math.min(p.index,EVENTS.length-1)]||EVENTS[0];}
@@ -340,10 +390,10 @@ function render(){
   EVENTS.forEach((e,i)=>{if(i>p.index)return;const b=document.createElement('button');b.type='button';b.className='story-node';b.style.left=`${e.x}%`;b.style.top=`${e.y}%`;b.setAttribute('aria-label',e.title);const complete=p.completed.includes(e.id);
     if(complete){b.classList.add('completed');b.disabled=true;b.innerHTML='<span>✓</span>';}
     else if(i===p.index&&!p.storyFinished){b.classList.add('current');b.innerHTML=`<span>${e.type==='boss'?'★':'!'}</span><small>${esc(e.title)}</small>`;b.onclick=()=>{if(p.rewardPending===e.id)showReward(e);else showEvent(e,p.pendingPost===e.id?'post':'intro');};}root.appendChild(b);});
-  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt III abgeschlossen – Fortsetzung folgt':actTitle(active.act);
+  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt IV abgeschlossen – Fortsetzung folgt':actTitle(active.act);
   document.getElementById('storyChronicleContent').innerHTML=chronicleHtml(p);
   const poolCount=document.getElementById('storyPoolCount');if(poolCount)poolCount.textContent=`Story-Kartenpool: ${storyPoolSet().size} Karten`;
-  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt III abgeschlossen</strong><span>Nach Nemesis führt Menias Spur tiefer in die Zwischenwelt. Die Leere, Thal Ziris und die Apparaturen warten in Akt IV.</span>';root.appendChild(done);}
+  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt IV abgeschlossen</strong><span>Menias Spur führt nun in die Unterwelt. Wiedergeburt, Rachsucht und die Vengeressen warten in Akt V.</span>';root.appendChild(done);}
 }
 function open(){render();const p=load(),e=current(p);if(p.rewardPending===e.id)setTimeout(()=>showReward(e),60);}
 function reset(){if(!confirm('Story-Testfortschritt wirklich zurücksetzen? Dabei werden auch alle gewonnenen Storykarten und Änderungen an Menias Storydeck entfernt.'))return;localStorage.removeItem(KEY);localStorage.removeItem(STORY_POOL_KEY);localStorage.removeItem(STORY_DECK_KEY);window.G5Engine?.clear?.();closeDialog();closeReward();closeDeckBuilder();render();}
