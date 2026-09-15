@@ -1,7 +1,8 @@
 (function(){
 'use strict';
 const KEY='5goddesses_story_progress_v1';
-const ACT1='Akt I – Die Fanfaren der Göttinnen';
+const ACTS={1:'Akt I – Die Fanfaren der Göttinnen',2:'Akt II – Fragmente einer vergangenen Welt'};
+function actTitle(act){return ACTS[Number(act)]||`Akt ${act}`;}
 
 const EVENTS=[
   {
@@ -52,14 +53,64 @@ const EVENTS=[
       'Für Menia geht es nicht darum, die Automata zu vernichten. Sie braucht Zugang zu den Informationen hinter Q.U.E.E.N.s Sperre – Informationen über die Kristalle und ihre Verbindung zu den anderen Welten.'
     ],
     post:'Q.U.E.E.N.s Niederlage öffnet Menia den Zugriff auf die gesuchten Daten. Die Störung ist nicht auf die Oberwelt begrenzt. Eine Spur führt deutlich in Richtung Astralwelt. Damit endet der erste Abschnitt von Menias Reise – und zum ersten Mal liegt wirklich eine andere Welt vor ihr.'
+  },
+  {
+    id:'act2_prolog',act:2,order:0,title:'Jenseits des Himmels',x:31.6,y:31.0,type:'story',
+    text:[
+      'Die Daten aus Q.U.E.E.N.s Anlage weisen auf dieselbe Energiesignatur, die Menia bereits im Kristall unter ihrer Bibliothek gespürt hat. Doch die Spur endet nicht in der Oberwelt. Sie führt über ihre Grenzen hinaus – in die Astralwelt.',
+      'Der Übergang ist alles andere als sanft. Als Menia wieder festen Boden unter den Füßen hat, liegt vor ihr eine Welt aus schwebenden Felsen, Lichtströmen und Bauwerken, die jeder vertrauten Vorstellung von Schwerkraft widersprechen. Kiki erholt sich deutlich schneller und fliegt voraus.',
+      'Menias Kristallfragment reagiert sofort. Irgendwo in dieser Welt existieren weitere Bruchstücke derselben Macht. Bevor sie ihnen folgen kann, nähert sich jedoch eine Feuer-Magierin, die eine Fremde aus der Oberwelt keineswegs willkommen heißt.'
+    ],
+    post:'Menia richtet ihre Aufzeichnungen, überprüft das Kristallfragment und folgt Kiki tiefer in die Astralwelt. Die erste Person, die ihren Weg kreuzt, scheint bereits auf sie aufmerksam geworden zu sein.'
+  },
+  {
+    id:'act2_saphira',act:2,order:1,title:'Die ungezähmte Flamme',x:22.2,y:37.3,type:'encounter',encounter:'act2_saphira',
+    text:[
+      'Saphira hält Menia zunächst für eine Eindringling. Die eigenwillige Feuer-Magierin kennt die Gefahren der Astralwelt und hat keinen Grund, einer Fremden zu vertrauen, die mit einem unbekannten Kristallfragment auftaucht.',
+      'Menia versucht zu erklären, weshalb sie Q.U.E.E.N.s Spur bis hierher verfolgt hat. Saphira bleibt misstrauisch. Erst ein Gefecht soll zeigen, ob Menia wirklich nur Antworten sucht oder selbst eine Gefahr für Astranum darstellt.'
+    ],
+    post:'Saphira erkennt, dass Menia keine Eroberin ist. Sie berichtet von ungewöhnlichen astralen Reaktionen und von Gebieten, in denen sich Wurzeln und fremdartige Kreaturen um alte Fragmente sammeln. Eine dieser Spuren führt zur Wurzelpein und zu Psilo Cybe.'
+  },
+  {
+    id:'act2_psilo',act:2,order:2,title:'Wurzelpein',x:17.5,y:43.7,type:'encounter',encounter:'act2_psilo',
+    text:[
+      'Die Landschaft verändert sich, je weiter Menia der Spur folgt. Wurzeln durchbrechen Felsen, fremdartige Pflanzen reagieren auf astrale Energie und zwischen den Ruinen breitet sich die Wurzelpein aus.',
+      'Im Zentrum dieses Gebietes steht Psilo Cybe. Menias Suche nach einem freigelegten Fragment führt unmittelbar in Psilos Einflussbereich. Keine von beiden ist bereit, der anderen das Fundstück kampflos zu überlassen.'
+    ],
+    post:'Zwischen den aufgebrochenen Wurzeln findet Menia tatsächlich ein Astralfragment. Es reagiert auf das Stück aus der Oberwelt. Psilo nennt den Namen einer Bezwingerin, die solche Fragmente gezielt sucht: Keyla Dorn.'
+  },
+  {
+    id:'act2_keyla',act:2,order:3,title:'Die Fragmentjägerin',x:10.7,y:28.5,type:'encounter',encounter:'act2_keyla',
+    text:[
+      'Im Astralfragment-Gebirge trifft Menia auf Keyla Dorn. Keyla erkennt sofort, dass Menia etwas bei sich trägt, das nicht in die Oberwelt gehören dürfte.',
+      'Beide wollen Antworten, doch keine ist bereit, ihre Fundstücke einer Fremden anzuvertrauen. Aus dem gegenseitigen Misstrauen entsteht ein Kampf um die Fragmente und um die Frage, wer ihre Bedeutung überhaupt verstehen kann.'
+    ],
+    post:'Nach dem Gefecht legen Menia und Keyla ihre Fragmente nebeneinander. Ehre, Leben, Verteidigung – und Menias Fundstück aus Q.U.E.E.N.s Anlage – reagieren miteinander. Eine Spur führt weiter zu Evelyn und zu einem Fluch, der mit einem Astralfragment-Drachen verbunden ist.'
+  },
+  {
+    id:'act2_evelyn',act:2,order:4,title:'Der Schattenfluch',x:19.1,y:32.0,type:'encounter',encounter:'act2_evelyn',
+    text:[
+      'Menia findet Evelyn dort, wo die astrale Energie unruhig wird. Der Schattenfluch, der mit ihr verbunden ist, wirkt zugleich wie Wunde und Schutz – eine Macht, die regeneriert und dennoch ihren Preis fordert.',
+      'Evelyn reagiert abweisend auf Menias Fragen nach dem Drachen, den Fragmenten und vor allem nach der Göttin der Astralwelt. Als Menia nicht nachgibt, wird aus dem Gespräch eine offene Konfrontation.'
+    ],
+    post:'Evelyn bestätigt Menias schlimmsten Verdacht: Die Göttin der Astralwelt ist keine ferne Legende. Sie hat gesprochen, gelenkt und Forderungen gestellt. Die Spur der Fragmente führt damit zum Astranum-Konklave – und zu seiner Magistratin Strikelyn.'
+  },
+  {
+    id:'act2_strikelyn',act:2,order:5,title:'Strikelyn – Magistratin des Astranums',x:26.6,y:34.4,type:'boss',boss:'act2_strikelyn',
+    text:[
+      'Strikelyn erwartet Menia im Einflussbereich des Astranum-Konklaves. Als brillante Magistratin und ehemalige Kommandantin verkörpert sie die Ordnung der Astralwelt – und sie wurde von der Göttin selbst eingesetzt.',
+      'Menia verlangt Zugang zu den Archiven und Antworten auf die Verbindung zwischen Göttin, Fragmenten und den fünf Welten. Strikelyn verweigert beides. Für sie ist Menias Suche längst zu einem Eingriff in Angelegenheiten geworden, deren Folgen die Fremde aus der Oberwelt nicht überblicken kann.',
+      'Menia weigert sich umzukehren. Damit entscheidet der Kampf, ob sie ihre Suche fortsetzen kann.'
+    ],
+    post:'Nach Strikelyns Niederlage erhält Menia Zugang zu einer Spur, die noch weiter zurückreicht. In den Aufzeichnungen findet sie keine einfache Erklärung für die Göttin – sondern eine Verbindung in die Mittelwelt und den Namen Mira Masako. Eine zweite Linie reicht Jahrhunderte weiter bis zu Skorpia Masako. Akt II endet mit einer neuen Frage: Wie können dieselben Spuren nicht nur Welten, sondern auch Zeiten miteinander verbinden?'
   }
 ];
 
 const STORY_POOL_KEY='5goddesses_story_pool_v1';
 const STORY_DECK_KEY='5goddesses_story_deck_v1';
 
-function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false};}
-function load(){try{const p=JSON.parse(localStorage.getItem(KEY)||'null');return p&&typeof p.index==='number'?{...defaultProgress(),...p,rewards:{...defaultProgress().rewards,...(p.rewards||{})}}:defaultProgress();}catch{return defaultProgress();}}
+function defaultProgress(){return {index:0,pendingPost:null,rewardPending:null,rewards:{},completed:[],failed:false,act1Finished:false,act2Finished:false,storyFinished:false};}
+function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'null');if(!raw||typeof raw.index!=='number')return defaultProgress();const p={...defaultProgress(),...raw,rewards:{...defaultProgress().rewards,...(raw.rewards||{})}};/* v2.09: abgeschlossene v1.98–v2.08-Akt-I-Spielstände direkt zu Akt II migrieren. */if(p.act1Finished&&p.index===5&&p.completed.includes('act1_queen')&&!p.act2Finished){p.index=EVENTS.findIndex(e=>e.id==='act2_prolog');p.pendingPost=null;p.rewardPending=null;p.failed=false;p.storyFinished=false;save(p);}return p;}catch{return defaultProgress();}}
 function save(p){localStorage.setItem(KEY,JSON.stringify(p));}
 function eventById(id){return EVENTS.find(e=>e.id===id)||null;}
 function current(p){return EVENTS[Math.min(p.index,EVENTS.length-1)]||EVENTS[0];}
@@ -113,18 +164,20 @@ function completeEvent(){
   const p=load(),e=current(p);
   if(!p.completed.includes(e.id))p.completed.push(e.id);
   p.pendingPost=null;p.rewardPending=null;p.failed=false;
-  if(p.index<EVENTS.length-1)p.index++; else p.act1Finished=true;
+  const next=EVENTS[p.index+1]||null;
+  if(next){if(next.act!==e.act)p[`act${e.act}Finished`]=true;p.index++;}
+  else {p[`act${e.act}Finished`]=true;p.storyFinished=true;}
   save(p);closeDialog();render();
 }
 function showEvent(e,mode='intro'){
   const p=load(),modal=document.getElementById('storyModal');if(!modal)return;
-  document.getElementById('storyDialogAct').textContent=ACT1;
+  document.getElementById('storyDialogAct').textContent=actTitle(e.act);
   document.getElementById('storyDialogTitle').textContent=e.title;
   const text=document.getElementById('storyDialogText');
   const actions=document.getElementById('storyDialogActions');actions.innerHTML='';
   if(mode==='post'){
     setHtmlText(text,[e.post]);
-    const b=document.createElement('button');b.className='primary story-fight-button';b.textContent=e.id===EVENTS.at(-1).id?'Akt I abschließen':'Weiter';b.onclick=completeEvent;actions.appendChild(b);
+    const b=document.createElement('button');b.className='primary story-fight-button';const next=EVENTS[EVENTS.indexOf(e)+1];b.textContent=!next||next.act!==e.act?`${actTitle(e.act).split(' – ')[0]} abschließen`:'Weiter';b.onclick=completeEvent;actions.appendChild(b);
   }else{
     const paras=[...e.text];if(p.failed)paras.push('Der letzte Versuch ist gescheitert. Menia kann das Gefecht erneut beginnen.');
     setHtmlText(text,paras);
@@ -215,17 +268,17 @@ function saveBuilder(){
 }
 function chronicleHtml(p){
   const done=EVENTS.filter(e=>p.completed.includes(e.id));if(!done.length)return '<p class="story-empty">Noch keine abgeschlossenen Ereignisse. Menias Chronik füllt sich mit ihrer Reise.</p>';
-  return `<h3>${esc(ACT1)}</h3>`+done.map((e,i)=>{const r=p.rewards?.[e.id]?cardByImage(p.rewards[e.id]):null;return `<article class="chronicle-entry"><div class="chronicle-number">${i+1}</div><div><h4>${esc(e.title)}</h4><p>${esc(e.post)}</p>${r?`<small class="chronicle-reward">Erhaltene Karte: ${esc(r.name)}</small>`:''}</div></article>`;}).join('');
+  let n=0;return Object.keys(ACTS).map(a=>{const events=done.filter(e=>e.act===Number(a));if(!events.length)return '';return `<h3>${esc(actTitle(a))}</h3>`+events.map(e=>{n++;const r=p.rewards?.[e.id]?cardByImage(p.rewards[e.id]):null;return `<article class="chronicle-entry"><div class="chronicle-number">${n}</div><div><h4>${esc(e.title)}</h4><p>${esc(e.post)}</p>${r?`<small class="chronicle-reward">Erhaltene Karte: ${esc(r.name)}</small>`:''}</div></article>`;}).join('');}).join('');
 }
 function render(){
   const root=document.getElementById('storyNodes');if(!root)return;const p=load();root.innerHTML='';
-  EVENTS.forEach((e,i)=>{if(i>p.index||(p.act1Finished&&i>=p.index))return;const b=document.createElement('button');b.type='button';b.className='story-node';b.style.left=`${e.x}%`;b.style.top=`${e.y}%`;b.setAttribute('aria-label',e.title);const complete=p.completed.includes(e.id);
+  EVENTS.forEach((e,i)=>{if(i>p.index)return;const b=document.createElement('button');b.type='button';b.className='story-node';b.style.left=`${e.x}%`;b.style.top=`${e.y}%`;b.setAttribute('aria-label',e.title);const complete=p.completed.includes(e.id);
     if(complete){b.classList.add('completed');b.disabled=true;b.innerHTML='<span>✓</span>';}
-    else if(i===p.index&&!p.act1Finished){b.classList.add('current');b.innerHTML=`<span>${e.type==='boss'?'★':'!'}</span><small>${esc(e.title)}</small>`;b.onclick=()=>{if(p.rewardPending===e.id)showReward(e);else showEvent(e,p.pendingPost===e.id?'post':'intro');};}root.appendChild(b);});
-  document.getElementById('storyActTitle').textContent=p.act1Finished?'Akt I abgeschlossen – Fortsetzung folgt':ACT1;
+    else if(i===p.index&&!p.storyFinished){b.classList.add('current');b.innerHTML=`<span>${e.type==='boss'?'★':'!'}</span><small>${esc(e.title)}</small>`;b.onclick=()=>{if(p.rewardPending===e.id)showReward(e);else showEvent(e,p.pendingPost===e.id?'post':'intro');};}root.appendChild(b);});
+  const active=current(p);document.getElementById('storyActTitle').textContent=p.storyFinished?'Akt II abgeschlossen – Fortsetzung folgt':actTitle(active.act);
   document.getElementById('storyChronicleContent').innerHTML=chronicleHtml(p);
   const poolCount=document.getElementById('storyPoolCount');if(poolCount)poolCount.textContent=`Story-Kartenpool: ${storyPoolSet().size} Karten`;
-  if(p.act1Finished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt I abgeschlossen</strong><span>Die Spur führt in die Astralwelt. Weitere Akte werden im nächsten Story-Ausbau freigeschaltet.</span>';root.appendChild(done);}
+  if(p.storyFinished){const done=document.createElement('div');done.className='story-act-complete';done.innerHTML='<strong>Akt II abgeschlossen</strong><span>Menias neue Spur führt in die Mittelwelt und zur Blutlinie der Masakos. Akt III folgt in einem späteren Story-Ausbau.</span>';root.appendChild(done);}
 }
 function open(){render();const p=load(),e=current(p);if(p.rewardPending===e.id)setTimeout(()=>showReward(e),60);}
 function reset(){if(!confirm('Story-Testfortschritt wirklich zurücksetzen? Dabei werden auch alle gewonnenen Storykarten und Änderungen an Menias Storydeck entfernt.'))return;localStorage.removeItem(KEY);localStorage.removeItem(STORY_POOL_KEY);localStorage.removeItem(STORY_DECK_KEY);window.G5Engine?.clear?.();closeDialog();closeReward();closeDeckBuilder();render();}
