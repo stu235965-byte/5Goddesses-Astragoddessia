@@ -2812,7 +2812,7 @@ window.GODDESSES_DB = {
       "effekte": [
         {
           "engine_key": "sofortige_zerstoerung_armor",
-          "description": "Zerstöre eine offene Rüstungskarte.",
+          "description": "Zerstöre eine offene fraktionslose Rüstkammerkarte.",
           "instinkt": true,
           "trigger": "instinct"
         }

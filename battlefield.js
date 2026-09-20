@@ -1,6 +1,6 @@
 (() => {
 'use strict';
-window.G5_BATTLEFIELD_BUILD='2.19';
+window.G5_BATTLEFIELD_BUILD='2.20';
 
 const G5_PROFILE_NAME_KEY='5goddesses_profilname_v1';
 function battleProfileName(){
@@ -1099,7 +1099,7 @@ function renderActions(){
       aufopferung_shield_target:'Aufopferung der S.H.I.E.L.D. – eigene Bezwingerin wählen',
       parade_riposte_target:'Parade, Riposte! – eigene Bezwingerin wählen',
       keine_ruestung_target:'Keine Rüstung für Dich! – gegnerische Bezwingerin wählen',
-      sofortige_zerstoerung_target:'Sofortige Zerstörung – offene Rüstung wählen',
+      sofortige_zerstoerung_target:'Sofortige Zerstörung – offene fraktionslose Rüstkammerkarte wählen',
       vollendete_toetungstechnik_target:'Vollendete Tötungstechnik – eigene Assassine wählen',
       astral_feuerball_target:'ASTRAL-Feuerball – gegnerische Bezwingerin wählen',
       ehrenlos_target:'Ehrenlos – gegnerische Bezwingerin wählen',
