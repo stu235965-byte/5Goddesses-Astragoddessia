@@ -2288,6 +2288,17 @@ function startInstantAstralSpell(state,playerIndex,azrSlot){
   if(!r||r.faceDown||!isInstantAstralSpell(c))return {ok:false,msg:'Kein unterstützter ASTRAL-Spruch.'};
   const valid=instantAstralValidation(state,playerIndex,c);if(!valid.ok)return valid;
   const key=instantAstralKey(c);
+  if(key==='astral_feuerball_damage'){
+    const previous=state.pendingBezEffect;
+    state.pendingBezEffect={type:'astral_feuerball_target',sourcePlayer:playerIndex,sourceAzrSlot:azrSlot};
+    const legalTargets=newAstralSpellTargets(state);
+    const blockedTargets=newAstralSpellBlockedTargets(state);
+    state.pendingBezEffect=previous;
+    if(!legalTargets.length){
+      const detail=blockedTargets.length?` ${blockedTargets.map(t=>`${t.name}: ${t.reason}`).join(' ')}`:'';
+      return {ok:false,msg:`ASTRAL-Feuerball hat aktuell kein legales gegnerisches Ziel.${detail}`};
+    }
+  }
   if(key==='verwuestung'){
     const target=state.sharedSecondary,damage=ownOpenCreatureWurm(state,playerIndex)?2:1;
     applyDamage(target,damage,'physical');
@@ -2443,6 +2454,11 @@ function newAstralSpellTargets(state){
   const q=state.pendingBezEffect,raw=rawNewAstralSpellTargets(state);
   if(!q||!raw.length)return raw;
   return raw.filter(t=>!pendingTargetProtectionReason(state,q,t.id));
+}
+function newAstralSpellBlockedTargets(state){
+  const q=state.pendingBezEffect,raw=rawNewAstralSpellTargets(state);
+  if(!q||!raw.length)return [];
+  return raw.map(t=>{const reason=pendingTargetProtectionReason(state,q,t.id);return reason?{...t,reason}:null;}).filter(Boolean);
 }
 function resolveNewAstralSpellTarget(state,id){
   const q=state.pendingBezEffect;if(!q)return {ok:false,msg:'Keine passende ASTRAL-Auswahl aktiv.'};
@@ -3716,8 +3732,23 @@ function revealDefenderCard(state,slot){
   log(state,`${opp.name} aktiviert die verdeckte Karte in AZR ${slot+1}: ${c?.name||'Karte'}.`);
   return result;
 }
+function passAttackReaction(state){
+  if(currentPhase(state).id!=='rush' || !state.attack)return {ok:false,msg:'Es ist kein Angriff vorbereitet.'};
+  state.attack.defenderReactionPassed=true;
+  log(state,`${opponent(state).name} spielt keine weitere Instinkt-Karte und lässt den Angriff zu.`);
+  return {ok:true};
+}
 function confirmAttack(state){
   if(currentPhase(state).id!=='rush' || !state.attack)return {ok:false,msg:'Es ist kein Angriff vorbereitet.'};
+  const reactions=defenderFaceDownSlots(state);
+  // Ein angekündigter Angriff darf nicht direkt in die Kampf-/Schadensauflösung
+  // springen, solange der menschliche Verteidiger noch verdeckte Instinkt-Karten
+  // besitzt. Er muss sie entweder aktivieren oder das Reaktionsfenster bewusst
+  // passen. Dadurch kann z.B. Aufopferung der S.H.I.E.L.D. noch VOR der
+  // Schildquellen-Auswahl einen temporären Schild erzeugen.
+  if(reactions.length && !state.attack.defenderReactionPassed){
+    return {ok:false,needsReaction:true,msg:'Vor dem Kampf liegt noch mindestens eine aktivierbare Instinkt-Karte verdeckt. Aktiviere eine Karte oder wähle „Keine weitere Instinkt-Karte – Angriff zulassen“.'};
+  }
   state.attack.defenderConfirmed=true;
   state.phaseIndex=6;
   log(state,`${opponent(state).name} lässt den Angriff zu. Die Kampfphase beginnt.`);
@@ -4476,7 +4507,7 @@ window.G5Engine={
   startPsiloWonder,psiloTargets,resolvePsiloTarget,keylaSearchTargets,resolveKeylaSearch,
   startQueen2Wonder,queenStackTargets,resolveQueenSearch,queenDiscardTargets,resolveQueen2Discard,
   fragmentfresserSchlundTargets,startFragmentfresserSchlundEffect,resolveFragmentfresserSchlund,
-  startInstantAstralSpell,newAstralSpellTargets,resolveNewAstralSpellTarget,controlledBezwingerinnen,exonovaQualifier,ensureVoidZone,resolveVoidReturnsAtPhase,tauschportalSourceTargets,voidTargetChoices,bisZumBitterenEndeTargets,resolveBisZumBitterenEndeTarget,resolveBisZumBitterenEndeChoice,meteorsturmWonderAvailable,startMeteorsturmWonder,meteorsturmTargets,resolveMeteorsturmTarget,secondaryLockedFor,startInstantRuestkammerItem,instantRuestkammerTargets,resolveInstantRuestkammerTarget,instinctCandidates,instinctWindowNeeded,passInstinctWindow,activateInstinctCard,ueberladungTargets,erlassHonorSources,erlassBegin,erlassRemoveHonor,erlassTargets,resolveErlassTarget,
+  startInstantAstralSpell,newAstralSpellTargets,newAstralSpellBlockedTargets,resolveNewAstralSpellTarget,controlledBezwingerinnen,exonovaQualifier,ensureVoidZone,resolveVoidReturnsAtPhase,tauschportalSourceTargets,voidTargetChoices,bisZumBitterenEndeTargets,resolveBisZumBitterenEndeTarget,resolveBisZumBitterenEndeChoice,meteorsturmWonderAvailable,startMeteorsturmWonder,meteorsturmTargets,resolveMeteorsturmTarget,secondaryLockedFor,startInstantRuestkammerItem,instantRuestkammerTargets,resolveInstantRuestkammerTarget,instinctCandidates,instinctWindowNeeded,passInstinctWindow,activateInstinctCard,ueberladungTargets,erlassHonorSources,erlassBegin,erlassRemoveHonor,erlassTargets,resolveErlassTarget,
   chronokryptaBezTargets,chronokryptaEquipmentTargets,startChronokrypta,selectChronokryptaPayer,resolveChronokrypta,ruthTargets,startRuthEffect,resolveRuthTarget,resolveRuthChoice,startWunderumwandlungsapparatur,wunderumwandlungsapparaturHonorSources,resolveWunderumwandlungsapparaturHonor,wunderumwandlungsapparaturTargets,resolveWunderumwandlungsapparaturTarget,ehrisTargets,startEhrisSelection,resolveEhrisSelection,effectiveWonderCost,
   startKristallharnischEffect,resolveKristallharnischEffect,
   triggerLebensfresserschildHunger,resolveLebensfresserschildHungerAtSupplyStart,
@@ -4484,6 +4515,6 @@ window.G5Engine={
   kikiEligibleTargets,activateKikiDodge,activateAliceDodge,activateVoidpiercerLifebreaker,activateParierdolchDodge,startLilou2Wonder,lilou2Targets,resolveLilou2Discard,startBaronesse2Wonder,
   keyla2DestroyTargets,keyla2DiscardTargets,resolveKeyla2Choice,resolveKeyla2Destroy,resolveKeyla2Discard,
   fragmentRewardTargets,resolveFragmentReward,
-  defenderFaceDownSlots,revealDefenderCard,confirmAttack,killIfNeeded,expireTimedFieldCardNow,titanCanRedirectRefuge,setTitanRedirectChoice,resolveCombat,currentShieldChoice,chooseShieldSource,returnToRush,cardData
+  defenderFaceDownSlots,revealDefenderCard,passAttackReaction,confirmAttack,killIfNeeded,expireTimedFieldCardNow,titanCanRedirectRefuge,setTitanRedirectChoice,resolveCombat,currentShieldChoice,chooseShieldSource,returnToRush,cardData
 };
 })();

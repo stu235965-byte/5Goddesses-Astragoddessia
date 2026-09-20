@@ -1,6 +1,6 @@
 (() => {
 'use strict';
-window.G5_BATTLEFIELD_BUILD='2.17';
+window.G5_BATTLEFIELD_BUILD='2.19';
 
 const G5_PROFILE_NAME_KEY='5goddesses_profilname_v1';
 function battleProfileName(){
@@ -1111,10 +1111,21 @@ function renderActions(){
       abstieg_target:'Abstieg – gegnerische entwickelte Bezwingerin wählen'
     };
     const title=document.createElement('strong');title.textContent=labels[state.pendingBezEffect.type]||'ASTRAL-Spruch – Ziel wählen';root.appendChild(title);
-    E().newAstralSpellTargets(state).forEach(t=>{
+    const targets=E().newAstralSpellTargets(state);
+    targets.forEach(t=>{
       const b=document.createElement('button');b.type='button';b.textContent=t.honor!==undefined?`${t.name} (${t.honor} Ehre)`:t.name;
       b.addEventListener('click',()=>{const rr=E().resolveNewAstralSpellTarget(state,t.id);saveRender(rr.msg);});root.appendChild(b);
     });
+    if(!targets.length){
+      const blocked=E().newAstralSpellBlockedTargets?.(state)||[];
+      const info=document.createElement('span');
+      info.textContent=blocked.length
+        ? blocked.map(t=>`${t.name}: ${t.reason}`).join(' · ')
+        : 'Aktuell ist kein legales Ziel vorhanden.';
+      root.appendChild(info);
+      const cancel=document.createElement('button');cancel.type='button';cancel.textContent='Auswahl abbrechen';
+      cancel.addEventListener('click',()=>{const rr=E().cancelPendingBezEffect(state);saveRender(rr.msg);});root.appendChild(cancel);
+    }
     return;
   }
   if(state.pendingBezEffect && ['laehmendes_nervengift','trank_der_staerke','trank_der_astral_macht','die_kanone','ueberladung','skyflux'].includes(state.pendingBezEffect.type)){
@@ -1533,10 +1544,14 @@ function renderActions(){
 
       const allow=document.createElement('button');
       allow.className='primary';
-      allow.textContent=state.attack.revealedDuringDefense
-        ?'Okay – Angriff fortsetzen'
-        :'Angriff zulassen';
+      allow.textContent=hidden.length
+        ?'Keine weitere Instinkt-Karte – Angriff zulassen'
+        :(state.attack.revealedDuringDefense?'Okay – Angriff fortsetzen':'Angriff zulassen');
       allow.addEventListener('click',()=>{
+        // Bewusstes Passen des Reaktionsfensters. Solange noch eine verdeckte
+        // Instinkt-Karte vorhanden ist, darf confirmAttack nicht stillschweigend
+        // daran vorbeispringen.
+        if(hidden.length)E().passAttackReaction?.(state);
         const r=E().confirmAttack(state);
         if(r.ok){
           selectedAttacker=null;
