@@ -1,6 +1,6 @@
 (() => {
 'use strict';
-window.G5_BATTLEFIELD_BUILD='2.20';
+window.G5_BATTLEFIELD_BUILD='2.21';
 
 const G5_PROFILE_NAME_KEY='5goddesses_profilname_v1';
 function battleProfileName(){
@@ -46,7 +46,9 @@ function finishEquipmentChoice(result,bezSlot,kind){
 function cardImg(r){return r?E().cardData(r)?.bild||r.bild:''}
 function phase(){return state?E().currentPhase(state):null}
 let aiTimer=null;
-function aiIsActive(){return !!state && state.winner===null && Number(state.activePlayer)===Number(state.aiPlayer??1) && !!window.G5AI;}
+function pvpLocalIndex(){return window.G5PvP?.active?Number(window.G5PvP.playerIndex):-1;}
+function pvpIsLocalTurn(){return !window.G5PvP?.active || Number(state?.activePlayer)===pvpLocalIndex();}
+function aiIsActive(){return !window.G5PvP?.active && !!state && state.winner===null && Number(state.activePlayer)===Number(state.aiPlayer??1) && !!window.G5AI;}
 function aiMayAutoStep(){
   // Legacy regression marker (v1.89 guard was intentionally replaced in v1.95): state.pendingBezEffect)return false
   if(!aiIsActive())return false;
@@ -63,7 +65,7 @@ function aiMayAutoStep(){
 function scheduleAI(delay=450){if(!aiMayAutoStep())return;clearTimeout(aiTimer);aiTimer=setTimeout(runAIStep,delay);}
 function runAIStep(){if(!aiIsActive())return;const r=window.G5AI.step(state);E().save(state);render(r?.msg||'KI-Gegner überlegt …');if(r?.unsupported){message('Die KI konnte eine seltene Kartenauswahl nicht automatisch auflösen. Bitte Gefecht nicht neu starten; dieser Zustand wurde als KI-Blockade erkannt.','warn');return;}if(r?.wait)return;if(aiIsActive())scheduleAI(380);}
 let aiDefenseTimer=null;
-function aiIsDefender(){return !!state?.attack && Number(1-state.activePlayer)===Number(state.aiPlayer??1);}
+function aiIsDefender(){return !window.G5PvP?.active && !!state?.attack && Number(1-state.activePlayer)===Number(state.aiPlayer??1);}
 function scheduleAIDefense(delay=500){if(!aiIsDefender())return;clearTimeout(aiDefenseTimer);aiDefenseTimer=setTimeout(()=>{if(!aiIsDefender()||phase()?.id!=='rush')return;let last=null;for(let guard=0;guard<20;guard++){const r=window.G5AI?.defenseStep?.(state);if(!r?.acted)break;last=r;if(!state.pendingBezEffect&&!state.pendingDamage&&!E().instinctWindowNeeded?.(state)&&!(state.attack&&phase()?.id==='rush'))break;}E().save(state);render(last?.msg||'KI-Gegner lässt den Angriff zu.');},delay);}
 function selectedAttackerRuntime(){
   if(selectedAttacker===null || !state)return null;
@@ -751,6 +753,13 @@ function renderBoards(){
     console.error('Sekundärzone konnte nicht gerendert werden:',err);
   }
 
+  // Discord-PvP: Das Brett darf auch während des gegnerischen Zuges sichtbar sein,
+  // aber nur der aktive Spieler erhält die normalen Board-Interaktionen.
+  if(window.G5PvP?.active && !pvpIsLocalTurn()){
+    if(cardPreviewMode)wirePreviewTargets();
+    return;
+  }
+
   if(cardPreviewMode){
     wirePreviewTargets();
     return;
@@ -854,9 +863,16 @@ function renderBoards(){
 }
 function renderHand(){
   const p=E().active(state);
+  const root=document.getElementById('gameHand');
+  if(window.G5PvP?.active && !pvpIsLocalTurn()){
+    const me=state.players?.[pvpLocalIndex()];
+    document.getElementById('handTitle').textContent=`Hand von ${me?.name||'dir'}`;
+    document.getElementById('handCount').textContent='verdeckt während des gegnerischen Zuges';
+    root.innerHTML='<div class="empty-state">Der Gegenspieler ist am Zug. Deine Handkarten bleiben verborgen.</div>';
+    return;
+  }
   document.getElementById('handTitle').textContent=`Hand von ${p.name}`;
   document.getElementById('handCount').textContent=`${p.hand.length} Karten`;
-  const root=document.getElementById('gameHand');
   root.innerHTML='';
 
   p.hand.forEach((bild,i)=>{
@@ -898,6 +914,22 @@ function renderActions(){
   if(cardPreviewMode){
     root.innerHTML='<div class="preview-mode-notice">🔍 Kartenvorschau aktiv · Spielinteraktionen sind eingefroren. Tippe eine Karte zum Vergrößern an.</div>';
     return;
+  }
+
+  if(window.G5PvP?.active && !pvpIsLocalTurn()){
+    const me=pvpLocalIndex();
+    const defender=state.attack && Number(1-state.activePlayer)===me;
+    const shield=state.pendingDamage && Number(E().currentShieldChoice?.(state)?.playerIndex)===me;
+    const pending=state.pendingBezEffect && Number(state.pendingBezEffect.sourcePlayer)===me;
+    const instinct=E().instinctWindowNeeded?.(state) && Number(1-state.activePlayer)===me;
+    if(instinct && !defender && !shield && !pending){
+      const b=document.createElement('button');b.className='primary';b.textContent='Instinkt-Reaktion prüfen';
+      b.onclick=()=>handleInstinctBeforePhaseEnd();root.appendChild(b);return;
+    }
+    if(!defender && !shield && !pending){
+      root.innerHTML='<span class="action-note">Gegenspieler ist am Zug. Der Gefechtsstand wird automatisch synchronisiert.</span>';
+      return;
+    }
   }
 
   if(state.pendingBezEffect?.type==='bis_zum_bitteren_ende_target'){
@@ -2151,7 +2183,7 @@ function render(msg=''){
     message(`🏆 ${state.players[state.winner].name} gewinnt! Die gegnerische Zuflucht hat 0 Herzen.`,'win');
     document.getElementById('gameNextPhase').disabled=true;
   }else{
-    document.getElementById('gameNextPhase').disabled=false;
+    document.getElementById('gameNextPhase').disabled=window.G5PvP?.active && !pvpIsLocalTurn();
     if(msg)message(msg);
     else message('');
   }
@@ -2248,6 +2280,7 @@ document.getElementById('gameResume')?.addEventListener('click',resumeGame);
 document.getElementById('gameNew')?.addEventListener('click',newGame);
 document.getElementById('gameNextPhase')?.addEventListener('click',async()=>{
   if(!state)return;
+  if(window.G5PvP?.active && !pvpIsLocalTurn())return message('Der Gegenspieler ist am Zug.','warn');
   if(aiIsActive())return message('Der KI-Gegner ist am Zug.','warn');
   if(['honor','supply','rush','resupply'].includes(phase()?.id||'') && handleInstinctBeforePhaseEnd())return;
   if(phase()?.id==='end')return animateRoundHandoff();
@@ -2269,6 +2302,13 @@ document.addEventListener('visibilitychange',()=>{
 const saved=E().load();
 document.getElementById('gameResume').hidden=!saved;
 document.getElementById('gamePreviewToggle')?.addEventListener('click',toggleCardPreviewMode);
+
+// Discord-PvP bridge. Absichtlich nicht über die normale Navigation erreichbar.
+window.G5PvPBattlefield={
+  setState(next,msg=''){state=next;selectedHandIndex=null;selectedAttacker=null;selectedTarget=null;selectedAttackType=null;refugeActionSelected=false;render(msg);},
+  getState(){return state;},
+  render(msg=''){render(msg);}
+};
 
 // v1.96 Storymode bridge: startet einen hinterlegten Boss mit denselben Gefechtsregeln.
 // Einzige Deckbau-Ausnahme ist act3_nemesis (3x Nemesis); validDeck prüft diese explizit.
