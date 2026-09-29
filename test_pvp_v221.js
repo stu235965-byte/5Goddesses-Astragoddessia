@@ -1,0 +1,14 @@
+const fs=require('fs');let pass=0,fail=0;const t=(n,c)=>{if(c){console.log('PASS',n);pass++}else{console.log('FAIL',n);fail++}};
+const html=fs.readFileSync('index.html','utf8'),bf=fs.readFileSync('battlefield.js','utf8'),pvp=fs.readFileSync('pvp-client.js','utf8'),sw=fs.readFileSync('service-worker.js','utf8'),server=fs.readFileSync('discord-pvp-server/server.js','utf8');
+t('PvP client loaded',html.includes('pvp-client.js'));
+t('No visible PvP menu entry',!html.match(/>[^<]*PvP[^<]*<\/button>/i));
+t('PvP requires hidden URL parameters',pvp.includes("q.get('pvp')")&&pvp.includes("q.get('token')")&&pvp.includes("q.get('api')"));
+t('Opponent turn hides hand',bf.includes('Deine Handkarten bleiben verborgen'));
+t('Normal board interactions gated by local turn',bf.includes('!pvpIsLocalTurn()'));
+t('PvP disables AI',bf.includes('!window.G5PvP?.active'));
+t('Revision conflict handled',pvp.includes('e.status===409'));
+t('Server checks bearer token',server.includes("replace(/^Bearer\\s+/i,''"));
+t('Server checks revision',server.includes('Number(req.body.revision)!==m.revision'));
+t('Discord challenge command exists',server.includes("commandName==='gefecht'"));
+t('PvP client cached',sw.includes('"./pvp-client.js"'));
+console.log(`RESULT ${pass} PASS / ${fail} FAIL`);if(fail)process.exit(1);
